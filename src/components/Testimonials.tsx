@@ -161,7 +161,7 @@ const Testimonials = () => {
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0 mb-4 border-4 border-white/30 shadow-xl"
+                          className="w-32 h-32 object-cover object-top rounded"
                         />
                         <h3 className="text-2xl font-bold mb-2">
                           {testimonial.name}
@@ -252,7 +252,7 @@ const Testimonials = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gray-200"
+                  className="w-12 h-14 object-cover object-top rounded mr-3"
                 />
                 <div>
                   <h4 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
