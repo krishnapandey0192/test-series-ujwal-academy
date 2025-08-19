@@ -55,10 +55,18 @@ const TestPage = () => {
   };
 
   const handleAnswer = (ans: string) => {
-    setAnswers({
-      ...answers,
-      [questions[currentQ]?._id || questions[currentQ]?.id]: ans,
-    });
+    const qid = questions[currentQ]?._id || questions[currentQ]?.id;
+    if (answers[qid] === ans) {
+      // Deselect if already selected
+      const newAnswers = { ...answers };
+      delete newAnswers[qid];
+      setAnswers(newAnswers);
+    } else {
+      setAnswers({
+        ...answers,
+        [qid]: ans,
+      });
+    }
   };
 
   const toggleReview = () => {
@@ -199,23 +207,28 @@ const TestPage = () => {
                     questions[currentQ]?._id || questions[currentQ]?.id
                   ] === opt
                     ? "bg-blue-100 border-blue-500"
-                    : "hover:bg-gray-50"
+                    : "bg-white border-gray-300 hover:bg-gray-50"
                 }`}
+                onClick={() => handleAnswer(opt)}
               >
-                <input
-                  type="radio"
-                  name={`q-${
-                    questions[currentQ]?._id || questions[currentQ]?.id
-                  }`}
-                  value={opt}
-                  checked={
-                    answers[
+                <span className="inline-block align-middle mr-2">
+                  <span
+                    className={`w-4 h-4 inline-block rounded-full border-2 ${
+                      answers[
+                        questions[currentQ]?._id || questions[currentQ]?.id
+                      ] === opt
+                        ? "border-blue-600 bg-blue-600"
+                        : "border-gray-400 bg-white"
+                    }`}
+                    style={{ verticalAlign: "middle" }}
+                  >
+                    {answers[
                       questions[currentQ]?._id || questions[currentQ]?.id
-                    ] === opt
-                  }
-                  onChange={() => handleAnswer(opt)}
-                  className="mr-2"
-                />
+                    ] === opt && (
+                      <span className="block w-2 h-2 m-1 rounded-full bg-white"></span>
+                    )}
+                  </span>
+                </span>
                 {opt}
               </label>
             ))}

@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 const icons = ["📚", "📝", "🎯", "🚀", "🔬", "🧠", "💡", "🏆", "📖", "🧪"];
 
 const TestSeriesCategory = () => {
+  const [showInactiveModal, setShowInactiveModal] = useState(false);
+  const [inactiveTestTitle, setInactiveTestTitle] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
   const [tests, setTests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -72,11 +76,57 @@ const TestSeriesCategory = () => {
                     Level: {test.difficulty || "-"}
                   </span>
                 </div>
-                <button className="w-full py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:from-blue-700 hover:to-purple-700 transition text-lg">
+                <button
+                  className="w-full py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:from-blue-700 hover:to-purple-700 transition text-lg"
+                  onClick={() => {
+                    if (!test.isActive) {
+                      setInactiveTestTitle(test.title);
+                      setShowInactiveModal(true);
+                      return;
+                    }
+                    const token = localStorage.getItem("token");
+                    if (token) {
+                      navigate(`/student/test/view/${test._id || test.id}`);
+                    } else {
+                      navigate("/register");
+                    }
+                  }}
+                  disabled={loading}
+                >
                   <span className="mr-2">▶️</span> Start Test
                 </button>
               </div>
             ))}
+          </div>
+        )}
+        {/* Inactive Test Modal */}
+        {showInactiveModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+            <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8 relative">
+              <button
+                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                onClick={() => setShowInactiveModal(false)}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+              <h3 className="text-xl font-bold mb-6 text-center text-red-700">
+                Test Not Active
+              </h3>
+              <p className="text-center mb-8 text-gray-700">
+                The test{" "}
+                <span className="font-semibold">{inactiveTestTitle}</span> is
+                currently not active and cannot be started.
+              </p>
+              <div className="flex justify-center">
+                <button
+                  className="px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                  onClick={() => setShowInactiveModal(false)}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>
