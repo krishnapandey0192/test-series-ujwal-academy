@@ -262,11 +262,62 @@ const Header = () => {
                   </button>
                 ))}
 
-                {/* Contact Info - Mobile */}
-                <div className="mt-8 p-4 bg-gray-50 rounded-xl space-y-3">
-                  <h3 className="font-semibold text-gray-800 mb-3">
-                    Contact Us
-                  </h3>
+                {/* Auth Buttons - Right after navigation items */}
+                <div className="space-y-3 pt-4">
+                  {!isLoggedIn ? (
+                    <>
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          window.location.href = "/login";
+                        }}
+                        className="block w-full px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl text-center hover:bg-blue-600 hover:text-white transition-all duration-300"
+                      >
+                        Login
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          window.location.href = "/register";
+                        }}
+                        className="block w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl text-center hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg"
+                      >
+                        Register
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          window.location.href = "/my-tests";
+                        }}
+                        className="block w-full px-4 py-3 border-2 border-purple-600 text-purple-600 font-semibold rounded-xl text-center hover:bg-purple-600 hover:text-white transition-all duration-300"
+                      >
+                        My Tests
+                      </button>
+                      <button
+                        onClick={() => {
+                          localStorage.clear();
+                          setIsLoggedIn(false);
+                          setIsMenuOpen(false);
+                          setUserName("");
+                          setUserEmail("");
+                          window.location.href = "/";
+                        }}
+                        className="block w-full px-4 py-3 bg-gray-600 text-white font-semibold rounded-xl text-center hover:bg-gray-700 transition-all duration-300"
+                      >
+                        Logout
+                      </button>
+                    </>
+                  )}
+                </div>
+              </nav>
+
+              {/* Contact Info - Moved to bottom */}
+              <div className="p-6 border-t border-gray-100 bg-gray-50">
+                <h3 className="font-semibold text-gray-800 mb-3">Contact Us</h3>
+                <div className="space-y-3">
                   <div className="flex items-center gap-3 text-sm text-gray-600">
                     <Phone className="h-4 w-4 text-blue-600" />
                     <span>+91 8878979958</span>
@@ -278,44 +329,6 @@ const Header = () => {
                     </span>
                   </div>
                 </div>
-              </nav>
-
-              {/* Auth Buttons - Mobile */}
-              <div className="p-6 border-t border-gray-100 space-y-3">
-                {!isLoggedIn ? (
-                  <>
-                    <button
-                      onClick={() => console.log("Navigating to /login")}
-                      className="block w-full px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl text-center hover:bg-blue-600 hover:text-white transition-all duration-300"
-                    >
-                      Login
-                    </button>
-                    <button
-                      onClick={() => console.log("Navigating to /register")}
-                      className="block w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl text-center hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg"
-                    >
-                      Register
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => console.log("Navigating to /my-tests")}
-                      className="block w-full px-4 py-3 border-2 border-purple-600 text-purple-600 font-semibold rounded-xl text-center hover:bg-purple-600 hover:text-white transition-all duration-300"
-                    >
-                      My Tests
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsLoggedIn(false);
-                        setIsMenuOpen(false);
-                      }}
-                      className="block w-full px-4 py-3 bg-gray-600 text-white font-semibold rounded-xl text-center hover:bg-gray-700 transition-all duration-300"
-                    >
-                      Logout
-                    </button>
-                  </>
-                )}
               </div>
             </div>
           </div>

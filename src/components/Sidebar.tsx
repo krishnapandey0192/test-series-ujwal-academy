@@ -36,7 +36,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col shadow-xl rounded-tr-3xl rounded-br-3xl overflow-hidden">
+    <aside className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col shadow-xl rounded-tr-3xl rounded-br-3xl overflow-hidden z-[60]">
       {/* Logo/Brand */}
       <div className="flex items-center gap-3 p-6 border-b border-gray-100">
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-xl shadow-md">

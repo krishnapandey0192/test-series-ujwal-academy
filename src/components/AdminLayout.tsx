@@ -9,13 +9,13 @@ type AdminLayoutProps = {
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen relative">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Topbar />
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
           {/* Nested Route Content */}
-            {/* {children} */}
+          {/* {children} */}
           <Outlet />
         </main>
       </div>
