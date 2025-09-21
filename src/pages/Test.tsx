@@ -50,12 +50,19 @@ const TestPage = () => {
   }, [id]);
 
   useEffect(() => {
-    if (!timer || timer <= 0) return;
+    if (timer === 0) {
+      // Auto-submit when timer reaches 0
+      if (questions.length && !submitting) {
+        handleSubmit();
+      }
+      return;
+    }
+    if (!timer || timer < 0) return;
     const interval = setInterval(() => {
       setTimer((prev: number) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(interval);
-  }, [timer]);
+  }, [timer, questions.length, submitting]);
 
   const formatTime = (t: number) => {
     const m = Math.floor(t / 60);
