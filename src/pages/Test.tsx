@@ -10,7 +10,7 @@ const TestPage = () => {
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<{ [key: string]: string }>({});
   const [review, setReview] = useState<string[]>([]);
-  const [timer, setTimer] = useState(60 * 30); // 30 mins
+  const [timer, setTimer] = useState<number>(0); // Will be set from duration
   const [showModal, setShowModal] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -27,7 +27,13 @@ const TestPage = () => {
         const res = await axiosInstance.get(`/api/questions/${id}`);
         setQuestions(res.data.questions || []);
         setTestTitle(res.data.testTitle || "");
-        setDuration(res.data.duration ?? null);
+        if (typeof res.data.duration === "number" && res.data.duration > 0) {
+          setDuration(res.data.duration);
+          setTimer(res.data.duration * 60); // set timer in seconds
+        } else {
+          setDuration(null);
+          setTimer(0);
+        }
       } catch (err: any) {
         if (err?.response?.status === 403) {
           setError("not-started-403");
@@ -44,11 +50,12 @@ const TestPage = () => {
   }, [id]);
 
   useEffect(() => {
+    if (!timer || timer <= 0) return;
     const interval = setInterval(() => {
       setTimer((prev: number) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [timer]);
 
   const formatTime = (t: number) => {
     const m = Math.floor(t / 60);
@@ -128,7 +135,7 @@ const TestPage = () => {
   }
 
   // Calculate time taken in seconds
-  const totalTime = 60 * 30;
+  const totalTime = duration ? duration * 60 : 0;
   const timeTaken = totalTime - timer;
 
   // Convert answers object to array of { questionId, selectedOption } where selectedOption is the actual value (e.g., 'Valmiki')
