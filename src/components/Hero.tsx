@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ArrowRight, Star, Users, Trophy, BookOpen, Play } from "lucide-react";
 
 const Hero = () => {

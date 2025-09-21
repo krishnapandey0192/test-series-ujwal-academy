@@ -34,7 +34,7 @@ export default function TestCard({
   onEdit,
   onDelete,
   onToggleActive,
-  onView,
+  // onView,
 }: TestCardProps) {
   const navigate = useNavigate();
   const handleView = () => {

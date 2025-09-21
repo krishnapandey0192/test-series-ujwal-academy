@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 
@@ -6,6 +6,7 @@ const TestPage = () => {
   const { id } = useParams();
   const [questions, setQuestions] = useState<any[]>([]);
   const [testTitle, setTestTitle] = useState<string>("");
+  const [duration, setDuration] = useState<number | null>(null);
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<{ [key: string]: string }>({});
   const [review, setReview] = useState<string[]>([]);
@@ -26,6 +27,7 @@ const TestPage = () => {
         const res = await axiosInstance.get(`/api/questions/${id}`);
         setQuestions(res.data.questions || []);
         setTestTitle(res.data.testTitle || "");
+        setDuration(res.data.duration ?? null);
       } catch (err: any) {
         if (err?.response?.status === 403) {
           setError("not-started-403");
@@ -165,10 +167,15 @@ const TestPage = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row font-roboto">
       {/* Left Panel: Question and Navigation */}
       <div className="flex-1 p-4">
-        {/* Test Title */}
+        {/* Test Title & Duration */}
         {testTitle && (
-          <div className="mb-4 text-2xl font-bold text-center text-blue-700">
+          <div className="mb-2 text-2xl font-bold text-center text-blue-700">
             {testTitle}
+          </div>
+        )}
+        {duration !== null && (
+          <div className="mb-4 text-center text-base text-gray-700 font-medium">
+            Duration: {duration} minute{duration === 1 ? "" : "s"}
           </div>
         )}
         {/* Timer */}
