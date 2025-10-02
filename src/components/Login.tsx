@@ -12,6 +12,7 @@ const Login = () => {
     showPassword: false,
   });
   const [error, setError] = useState("");
+  const [loadingLogin, setLoadingLogin] = useState(false);
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -23,7 +24,9 @@ const Login = () => {
   };
 
   const handleSubmit = async () => {
+    if (loadingLogin) return; // prevent double submit
     setError("");
+    setLoadingLogin(true);
     try {
       const res = await axiosInstance.post("/api/auth/login", {
         role: form.loginType,
@@ -43,7 +46,7 @@ const Login = () => {
         if (user.role === "admin") {
           navigate("/admin/dashboard");
         } else {
-          navigate("/test-series");
+          navigate("/");
         }
       }, 300);
     } catch (err: any) {
@@ -51,6 +54,8 @@ const Login = () => {
         err?.response?.data?.message || "Login failed. Please try again.";
       setError(msg);
       toast.error(msg);
+    } finally {
+      setLoadingLogin(false);
     }
   };
 
@@ -118,6 +123,7 @@ const Login = () => {
                 checked={form.loginType === role}
                 onChange={handleChange}
                 className="accent-blue-600"
+                disabled={loadingLogin}
               />
               <span className="capitalize">{role}</span>
             </label>
@@ -139,6 +145,7 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Enter your email"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loadingLogin}
           />
         </div>
 
@@ -157,6 +164,7 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Password"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+            disabled={loadingLogin}
           />
           <div
             onClick={togglePassword}
@@ -173,9 +181,37 @@ const Login = () => {
         )}
         <button
           onClick={handleSubmit}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-semibold"
+          className={`w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-semibold flex items-center justify-center gap-2 ${
+            loadingLogin ? "opacity-70 cursor-not-allowed" : ""
+          }`}
+          disabled={loadingLogin}
         >
-          Login
+          {loadingLogin ? (
+            <>
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+              <span>Logging in...</span>
+            </>
+          ) : (
+            "Login"
+          )}
         </button>
       </div>
     </div>

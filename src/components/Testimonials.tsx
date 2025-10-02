@@ -8,7 +8,8 @@ import {
   Medal,
   Award,
 } from "lucide-react";
-import Rajkumar from "../assets/rajkamal.jpeg";
+import shreyansh from "../assets/shreyansh.jpeg";
+import neha from "../assets/neha.jpeg";
 import neeraj from "../assets/neeraj.jpeg";
 import kanchan from "../assets/kanchan.jpeg";
 import rohit from "../assets/rohit.jpeg";
@@ -18,31 +19,20 @@ const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
+    // {
+    //   name: "Rajkamal",
+    //   exam: "SSC CGL Preparation",
+    //   position: "Current Student",
+    //   image: Rajkumar,
+    //   rating: 5,
+    //   testimonial:
+    //     "The teaching quality at Ujjawal Academy is exceptional. The faculty explains complex concepts in simple ways and provides individual attention to each student.",
+    //   rank: "Batch Topper",
+    //   gradient: "from-blue-500 to-cyan-500",
+    // },
     {
-      name: "Rajkamal",
-      exam: "SSC CGL Preparation",
-      position: "Current Student",
-      image: Rajkumar,
-      rating: 5,
-      testimonial:
-        "The teaching quality at Ujjawal Academy is exceptional. The faculty explains complex concepts in simple ways and provides individual attention to each student.",
-      rank: "Batch Topper",
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      name: "Neeraj",
-      exam: "Railway NTPC Preparation",
-      position: "Current Student",
-      image: neeraj,
-      rating: 5,
-      testimonial:
-        "I am very satisfied with the study material and regular test series at Ujjawal Academy. The mock tests help me track my progress and improve weak areas.",
-      rank: "Top 10 in Class",
-      gradient: "from-emerald-500 to-teal-500",
-    },
-    {
-      name: "Kanchan",
-      exam: "SSC CPO Preparation",
+      name: "Kanchan Shukla",
+      exam: "MP POLICE & DELHI POLICE",
       position: "Current Student",
       image: kanchan,
       rating: 5,
@@ -52,8 +42,8 @@ const Testimonials = () => {
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      name: "Shalini",
-      exam: "SSC CHSL Preparation",
+      name: "Shalini Jaiswal",
+      exam: "MP POLICE & RAILWAY NTPC",
       position: "Current Student",
       image: shalini,
       rating: 5,
@@ -63,8 +53,20 @@ const Testimonials = () => {
       gradient: "from-orange-500 to-red-500",
     },
     {
-      name: "Rohit",
-      exam: "SSC GD Preparation",
+      name: "Neeraj Goswami",
+      exam: "MP POLICE & SSC GD",
+      position: "Current Student",
+      image: neeraj,
+      rating: 5,
+      testimonial:
+        "I am very satisfied with the study material and regular test series at Ujjawal Academy. The mock tests help me track my progress and improve weak areas.",
+      rank: "Top 10 in Class",
+      gradient: "from-emerald-500 to-teal-500",
+    },
+
+    {
+      name: "Rohit Prajapati",
+      exam: "DELHI POLICE & SSC GD",
       position: "Current Student",
       image: rohit,
       rating: 5,
@@ -74,16 +76,38 @@ const Testimonials = () => {
       gradient: "from-indigo-500 to-purple-500",
     },
     {
-      name: "Neeraj",
-      exam: "Railway Group D Preparation",
+      name: "Shreyansh Mishra",
+      exam: "SSC CHSL & MP POLICE",
       position: "Current Student",
-      image: neeraj,
+      image: shreyansh,
       rating: 5,
       testimonial:
-        "Ujjawal Academy balanced approach of theory and practical training is perfect for Railway preparation. The faculty truly cares about student success.",
-      rank: "Best Discipline",
-      gradient: "from-cyan-500 to-blue-500",
+        "Ujjawal Academy’s structured approach, doubt-solving sessions, and disciplined study environment have boosted my confidence. The faculty guidance keeps me motivated every day.",
+      rank: "Top Achiever",
+      gradient: "from-blue-500 to-cyan-500",
     },
+    {
+      name: "Neha",
+      exam: "RAILWAY NTPC & GROUP D",
+      position: "Current Student",
+      image: neha,
+      rating: 5,
+      testimonial:
+        "Regular mock tests and personal attention at Ujjawal Academy helped me improve my speed and accuracy. The competitive environment always pushes me to give my best.",
+      rank: "Star Performer",
+      gradient: "from-pink-500 to-red-500",
+    },
+    // {
+    //   name: "Neeraj",
+    //   exam: "Railway Group D Preparation",
+    //   position: "Current Student",
+    //   image: neeraj,
+    //   rating: 5,
+    //   testimonial:
+    //     "Ujjawal Academy balanced approach of theory and practical training is perfect for Railway preparation. The faculty truly cares about student success.",
+    //   rank: "Best Discipline",
+    //   gradient: "from-cyan-500 to-blue-500",
+    // },
   ];
 
   useEffect(() => {

@@ -34,9 +34,11 @@ const TestSeriesCategory = () => {
     fetchCategoryWithTests();
   }, [id]);
 
+  console.log(tests, "tests for category");
+
   return (
     <section className="py-12 bg-gray-50 min-h-[60vh]">
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-5">
         <h2 className="text-3xl font-bold text-blue-700 mb-8">
           Tests for Category: {categoryName}
         </h2>
@@ -53,31 +55,54 @@ const TestSeriesCategory = () => {
             No tests found for this category.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             {tests.map((test, idx) => (
               <div
                 key={test._id || test.id}
-                className="bg-white rounded-xl shadow p-6 flex flex-col items-center gap-2"
+                className="bg-white rounded-lg shadow-sm p-4 sm:p-5 flex flex-col items-start sm:items-center gap-2 hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200"
               >
-                <div className="text-4xl mb-2">{icons[idx % icons.length]}</div>
-                <h3 className="font-bold text-lg text-blue-700">
-                  {test.title}
-                </h3>
-                <p className="text-gray-600 text-center">{test.description}</p>
-                <div className="flex flex-wrap justify-center gap-2 mb-4 text-xs text-gray-500">
-                  <span className="bg-blue-50 px-2 py-1 rounded">
-                    Questions:{" "}
-                    {test.totalQuestions || test.questions?.length || "-"}
-                  </span>
-                  <span className="bg-green-50 px-2 py-1 rounded">
-                    Duration: {test.duration || 30} min
-                  </span>
-                  <span className="bg-yellow-50 px-2 py-1 rounded">
-                    Level: {test.difficulty || "-"}
-                  </span>
+                <div className="flex items-center w-full gap-3">
+                  <div className="text-2xl sm:text-4xl">
+                    {icons[idx % icons.length]}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-sm sm:text-base text-blue-700 line-clamp-2">
+                      {test.title}
+                    </h3>
+                    {test.description && (
+                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 mt-1">
+                        {test.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
+
+                <div className="flex flex-wrap justify-start sm:justify-center gap-2 text-xs text-gray-500 w-full">
+                  <span className="bg-blue-50 px-2 py-0.5 rounded-full">
+                    <strong className="text-blue-700">Questions</strong>:{" "}
+                    {test.questionCount  || "-"}
+                  </span>
+                  <span className="bg-green-50 px-2 py-0.5 rounded-full">
+                    <strong className="text-green-700">Duration</strong>:{" "}
+                    {test.duration || 30} min
+                  </span>
+                  <span className="bg-yellow-50 px-2 py-0.5 rounded-full">
+                    <strong className="text-yellow-700">Total Marks</strong>:{" "}
+                    {test.totalMarks || "-"}
+                  </span>
+                    {test.isActive ? (
+                      <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
+                        <strong className="font-semibold">Active</strong>
+                      </span>
+                    ) : (
+                      <span className="bg-red-100 text-red-800 px-2 py-0.5 rounded-full">
+                        <strong className="font-semibold">Inactive</strong>
+                      </span>
+                    )}
+                </div>
+
                 <button
-                  className="w-full py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:from-blue-700 hover:to-purple-700 transition text-lg"
+                  className="w-full py-2 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-sm hover:from-blue-700 hover:to-purple-700 transition text-sm flex items-center justify-center gap-2"
                   onClick={() => {
                     if (!test.isActive) {
                       setInactiveTestTitle(test.title);
@@ -92,8 +117,10 @@ const TestSeriesCategory = () => {
                     }
                   }}
                   disabled={loading}
+                  aria-label={loading ? "Loading tests" : `Start ${test.title}`}
                 >
-                  <span className="mr-2">▶️</span> Start Test
+                  <span className="text-sm">▶️</span> Start Test
+                  <span className="hidden sm:inline">Start Test</span>
                 </button>
               </div>
             ))}
