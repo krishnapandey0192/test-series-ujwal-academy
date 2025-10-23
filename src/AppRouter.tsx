@@ -3,6 +3,7 @@ import { Toaster } from "sonner";
 import Layout from "./components/Layout";
 import TestSeries from "./components/TestSeries";
 import TestSeriesCategory from "./components/TestSeriesCategory";
+import TestSeriesTests from "./components/TestSeriesTests";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import TestExperience from "./components/TestExperience";
@@ -12,8 +13,8 @@ import AdminTests from "./components/AdminTests";
 import AdminAddTest from "./components/AdminAddTest";
 import AdminCategoryTests from "./components/AdminCategoryTests";
 import AdminCategories from "./components/AdminCategories";
+import AdminSubcategories from "./components/AdminSubcategories";
 import App from "./App";
-import Tests from "./pages/Test";
 import TestPage from "./pages/Test";
 import Scoreboard from "./pages/Scoreboard";
 import Leaderboard from "./components/Leaderboard";
@@ -48,6 +49,14 @@ const AppRouter = () => (
           element={
             <Layout>
               <TestSeriesCategory />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test-series/category/:categoryId/subcategory/:subcategoryId"
+          element={
+            <Layout>
+              <TestSeriesTests />
             </Layout>
           }
         />
@@ -111,7 +120,8 @@ const AppRouter = () => (
           <Route path="tests" element={<AdminTests />} />
           <Route path="categories" element={<AdminCategories />} />
           <Route path="add-test" element={<AdminAddTest />} />
-          <Route path="category/:id" element={<AdminCategoryTests />} />
+          <Route path="category/:categoryId" element={<AdminSubcategories />} />
+          <Route path="category/:categoryId/:subcategoryId" element={<AdminCategoryTests />} />
           <Route path="test/view/:id" element={<TestPage />} />
           <Route path="student-analysis" element={<StudentAnalysis />} />
         </Route>

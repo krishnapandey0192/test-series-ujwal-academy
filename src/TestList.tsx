@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TestCard from "./components/TestCard";
 
 // Example API response (replace with your actual data fetch)
@@ -35,6 +35,7 @@ const apiResponse = {
 // Transform attempts to TestCard props, add isActive
 const initialTests = apiResponse.attempts.map((attempt, idx) => ({
   id: attempt.testId._id,
+  _id: attempt.testId._id, // Add _id property
   title: attempt.testId.title,
   examType: attempt.testId.examType,
   totalMarks: attempt.testId.totalMarks,
@@ -45,15 +46,15 @@ const initialTests = apiResponse.attempts.map((attempt, idx) => ({
 }));
 
 export default function TestList() {
-  const [tests, setTests] = useState(initialTests);
+  const [tests, _setTests] = useState(initialTests);
 
-  const handleToggleActive = (id) => {
-    setTests((prev) =>
-      prev.map((test) =>
-        test.id === id ? { ...test, isActive: !test.isActive } : test
-      )
-    );
-  };
+  // const handleToggleActive = (id: string) => {
+  //   setTests((prev) =>
+  //     prev.map((test) =>
+  //       test.id === id ? { ...test, isActive: !test.isActive } : test
+  //     )
+  //   );
+  // };
 
   return (
     <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -61,9 +62,8 @@ export default function TestList() {
         <TestCard
           key={test.id}
           test={test}
-          onEdit={() => {}}
-          onDelete={() => {}}
-          onToggleActive={handleToggleActive}
+
+        // onToggleActive={handleToggleActive}
         />
       ))}
     </div>

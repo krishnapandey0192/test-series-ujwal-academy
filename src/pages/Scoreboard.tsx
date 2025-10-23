@@ -17,9 +17,14 @@ const Scoreboard = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200 font-roboto">
       <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border-t-8 border-blue-600">
-        <h1 className="text-3xl font-bold text-blue-700 mb-2">
-          Test Submitted!
+        <h1 className="text-base sm:text-lg lg:text-xl font-black tracking-tight">
+          <span className="bg-gradient-to-r from-blue-700 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
+            UJJAWAL ACADEMY MAUGANJ
+          </span>
         </h1>
+        <h2 className="text-xl font-bold text-blue-700 my-2">
+          Test Submitted!
+        </h2>
         <p className="text-lg text-gray-600 mb-6">
           Congratulations on completing your test.
         </p>

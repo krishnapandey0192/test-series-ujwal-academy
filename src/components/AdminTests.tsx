@@ -4,6 +4,7 @@ import axiosInstance from "../utils/axiosInstance";
 
 type Test = {
   id: string;
+  _id: string;
   title: string;
   examType: string;
   duration: number;
@@ -65,6 +66,7 @@ const AdminTests = () => {
         "https://source.unsplash.com/400x250/?exam,education,test";
       const testsArr = (res.data.tests || []).map((t: any) => ({
         id: t._id,
+        _id: t._id,
         title: t.title,
         examType: t.examType,
         duration: t.duration,
@@ -103,14 +105,6 @@ const AdminTests = () => {
   };
 
   const deleteTest = async (id: string) => {
-    // Toggle isActive for a test
-    function handleToggleActive(id: string) {
-      setTests((prev) =>
-        prev.map((test) =>
-          test.id === id ? { ...test, isActive: !test.isActive } : test
-        )
-      );
-    }
     setLoading(true);
     try {
       await axiosInstance.delete(`/api/tests/${id}`);
@@ -193,29 +187,6 @@ const AdminTests = () => {
     // No file upload, nothing to reset
   };
 
-  async function handleToggleActive(id: string) {
-    // Find the test to toggle
-    const testToToggle = tests.find((t) => t.id === id);
-    if (!testToToggle) return;
-    const updated = { ...testToToggle, isActive: !testToToggle.isActive };
-    // Optimistically update UI
-    setTests((prev) =>
-      prev.map((test) =>
-        test.id === id ? { ...test, isActive: !test.isActive } : test
-      )
-    );
-    // Persist to backend
-    try {
-      await updateTest(id, updated);
-    } catch (err) {
-      // Optionally, revert UI or show error
-      setTests((prev) =>
-        prev.map((test) =>
-          test.id === id ? { ...test, isActive: testToToggle.isActive } : test
-        )
-      );
-    }
-  }
 
   return (
     <div>
@@ -262,39 +233,19 @@ const AdminTests = () => {
             <TestCard
               key={test.id}
               test={test}
-              onEdit={() => {
-                setShowModal(true);
-                setIsEdit(true);
-                setEditId(test.id);
-                setForm({
-                  title: test.title,
-                  examType: test.examType,
-                  duration: String(test.duration),
-                  totalMarks: String(test.totalMarks),
-                  questionCount: String(test.questionCount),
-                  startDate: test.startDate ? test.startDate.split("T")[0] : "",
-                  isActive:
-                    typeof test.isActive === "boolean" ? test.isActive : true,
-                  categoryId: test.categoryId || "",
-                });
-                setErrors({
-                  title: "",
-                  examType: "",
-                  duration: "",
-                  totalMarks: "",
-                  questionCount: "",
-                  startDate: "",
-                });
+              isAdmin={true}
+              showAdminActions={true}
+              onUpdate={async (testId, testData) => {
+                await updateTest(testId, testData);
               }}
-              onDelete={async () => {
+              onDelete={async (testId) => {
                 setShowDeleteModal(true);
-                setDeleteId(test.id);
+                setDeleteId(testId);
               }}
-              onView={() => {
-                // Implement view logic here
-                alert(`Viewing test: ${test.title}`);
-              }}
-              onToggleActive={handleToggleActive}
+              // onView={() => {
+              //   // Implement view logic here
+              //   alert(`Viewing test: ${test.title}`);
+              // }}
             />
           ))
         )}
@@ -345,9 +296,8 @@ const AdminTests = () => {
                     value={form.title}
                     onChange={handleChange}
                     placeholder="Enter test title"
-                    className={`w-full border ${
-                      errors.title ? "border-red-500" : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${errors.title ? "border-red-500" : "border-gray-300"
+                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                   />
                   {errors.title && (
                     <p className="text-red-500 text-xs mt-1">{errors.title}</p>
@@ -363,9 +313,8 @@ const AdminTests = () => {
                     value={form.examType}
                     onChange={handleChange}
                     placeholder="e.g. Mock, Practice"
-                    className={`w-full border ${
-                      errors.examType ? "border-red-500" : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${errors.examType ? "border-red-500" : "border-gray-300"
+                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                   />
                   {errors.examType && (
                     <p className="text-red-500 text-xs mt-1">
@@ -383,9 +332,8 @@ const AdminTests = () => {
                     value={form.duration}
                     onChange={handleChange}
                     placeholder="e.g. 60"
-                    className={`w-full border ${
-                      errors.duration ? "border-red-500" : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${errors.duration ? "border-red-500" : "border-gray-300"
+                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.duration && (
@@ -404,9 +352,8 @@ const AdminTests = () => {
                     value={form.totalMarks}
                     onChange={handleChange}
                     placeholder="e.g. 100"
-                    className={`w-full border ${
-                      errors.totalMarks ? "border-red-500" : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${errors.totalMarks ? "border-red-500" : "border-gray-300"
+                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.totalMarks && (
@@ -425,11 +372,10 @@ const AdminTests = () => {
                     value={form.questionCount}
                     onChange={handleChange}
                     placeholder="e.g. 50"
-                    className={`w-full border ${
-                      errors.questionCount
-                        ? "border-red-500"
-                        : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${errors.questionCount
+                      ? "border-red-500"
+                      : "border-gray-300"
+                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.questionCount && (
@@ -449,9 +395,8 @@ const AdminTests = () => {
                   name="startDate"
                   value={form.startDate}
                   onChange={handleChange}
-                  className={`w-full border ${
-                    errors.startDate ? "border-red-500" : "border-gray-300"
-                  } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white`}
+                  className={`w-full border ${errors.startDate ? "border-red-500" : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white`}
                 />
                 {errors.startDate && (
                   <p className="text-red-500 text-xs mt-1">
@@ -466,24 +411,21 @@ const AdminTests = () => {
                 </label>
                 <button
                   type="button"
-                  className={`relative inline-flex h-6 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors duration-200 focus:outline-none ${
-                    form.isActive ? "bg-green-500" : "bg-gray-300"
-                  }`}
+                  className={`relative inline-flex h-6 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors duration-200 focus:outline-none ${form.isActive ? "bg-green-500" : "bg-gray-300"
+                    }`}
                   onClick={() =>
                     setForm((prev) => ({ ...prev, isActive: !prev.isActive }))
                   }
                   aria-pressed={form.isActive}
                 >
                   <span
-                    className={`inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition-transform duration-200 ${
-                      form.isActive ? "translate-x-6" : "translate-x-1"
-                    }`}
+                    className={`inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition-transform duration-200 ${form.isActive ? "translate-x-6" : "translate-x-1"
+                      }`}
                   />
                 </button>
                 <span
-                  className={`ml-3 text-sm font-semibold ${
-                    form.isActive ? "text-green-600" : "text-gray-500"
-                  }`}
+                  className={`ml-3 text-sm font-semibold ${form.isActive ? "text-green-600" : "text-gray-500"
+                    }`}
                 >
                   {form.isActive ? "Active" : "Inactive"}
                 </span>
