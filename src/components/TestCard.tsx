@@ -290,97 +290,170 @@ export default function TestCard({
         </div>
       </div>
 
-      {/* Desktop Layout */}
-<div className="hidden sm:block">
-  <div className="flex justify-between items-center bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6">
-    {/* Left Section */}
-    <div className="flex flex-col gap-3">
-      {/* Tags */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-          <span className="w-2 h-2 bg-white rounded-full"></span>
+     {/* Desktop & Mobile Responsive Layout */}
+<div className="w-full">
+  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-white rounded-xl p-4 shadow-sm">
+    {/* ---------- LEFT CONTENT ---------- */}
+    <div className="flex-1">
+      {/* Badges */}
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        {/* LIVE TEST */}
+        <div className="flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+          <div className="w-1.5 h-1.5 bg-white rounded-full" />
           LIVE TEST
-        </span>
-        <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">FREE</span>
-        <span
-          onClick={showAdminActions ? handleToggleClick : undefined}
-          className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
-            test.isActive ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-          } ${showAdminActions ? 'cursor-pointer hover:scale-105 transition' : ''}`}
-        >
-          <span className="w-2 h-2 bg-white rounded-full"></span>
-          {test.isActive ? 'ACTIVE' : 'INACTIVE'}
-        </span>
+        </div>
+
+        {/* FREE */}
+        <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+          FREE
+        </div>
+
+        {/* ACTIVE / INACTIVE (Admin only) */}
+        {showAdminActions && (
+          <div
+            onClick={handleToggleClick}
+            className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
+              test.isActive
+                ? "bg-green-500 text-white hover:bg-green-600"
+                : "bg-red-500 text-white hover:bg-red-600"
+            }`}
+          >
+            <div
+              className={`w-1.5 h-1.5 rounded-full ${
+                test.isActive ? "bg-white" : "bg-white"
+              }`}
+            />
+            {test.isActive ? "ACTIVE" : "INACTIVE"}
+          </div>
+        )}
       </div>
 
-      {/* Test Title */}
-      <h2 className="text-lg font-bold text-gray-900">{test.title}</h2>
+      {/* Title + Users */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+        <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight text-center sm:text-left">
+          {test.title}
+        </h2>
 
-      {/* Users */}
-      <div className="flex items-center text-gray-500 text-sm">
-        <Zap className="w-4 h-4 text-yellow-500 mr-1" />
-        <span>{test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : '1.5k'} Users</span>
+        <div className="flex items-center gap-1 text-gray-500 text-sm justify-center sm:justify-start">
+          <Zap className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+          <span>
+            {test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : "1.5k"}{" "}
+            Users
+          </span>
+        </div>
       </div>
 
       {/* Test Info */}
-      <div className="flex items-center gap-6 text-gray-600 text-sm mt-2">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-gray-600 text-sm justify-center sm:justify-start">
         <div className="flex items-center gap-1">
-          <span className="w-5 h-5 flex items-center justify-center bg-gray-100 rounded-full">❓</span>
+          <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+            <span className="text-xs">❓</span>
+          </div>
           <span>{test.questionCount} Questions</span>
         </div>
+
         <div className="flex items-center gap-1">
-          <FileText className="w-4 h-4" />
+          <FileText className="w-4 h-4 flex-shrink-0" />
           <span>{test.totalMarks} Marks</span>
         </div>
+
         <div className="flex items-center gap-1">
-          <Clock className="w-4 h-4" />
+          <Clock className="w-4 h-4 flex-shrink-0" />
           <span>{test.duration} Mins</span>
         </div>
       </div>
     </div>
 
-    {/* Right Section */}
-    <div className="flex flex-col items-end justify-center gap-3">
-      <button
-        onClick={handleStartClick}
-        disabled={!test.isActive}
-        className={`px-6 py-2 rounded-lg font-bold text-white transition text-sm ${
-          test.isActive
-            ? 'bg-cyan-500 hover:bg-cyan-600'
-            : 'bg-gray-300 cursor-not-allowed'
-        }`}
-      >
-        {test.isActive ? 'Start Now' : 'Test Inactive'}
-      </button>
-
-      {/* Active Status */}
-      <div className="flex items-center gap-2">
-        <span className={`w-3 h-3 rounded-full ${test.isActive ? 'bg-green-500' : 'bg-red-500'}`}></span>
-        <span className={`text-sm font-medium ${test.isActive ? 'text-green-600' : 'text-red-600'}`}>
-          {test.isActive ? 'Active' : 'Inactive'}
-        </span>
-      </div>
-
-      {/* Admin Buttons */}
-      {isAdmin && (
-        <div className="flex gap-2 mt-1">
+    {/* ---------- RIGHT CONTENT ---------- */}
+    <div className="flex-shrink-0 lg:ml-6 w-full sm:w-auto">
+      {showAdminActions ? (
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
+          {/* Start Button */}
           <button
-            onClick={handleEditClick}
-            className="flex items-center justify-center bg-blue-600 text-white px-3 py-2 rounded-md text-xs hover:bg-blue-700 transition"
+            onClick={handleStartClick}
+            disabled={!test.isActive}
+            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-bold text-white text-sm sm:text-base transition ${
+              test.isActive
+                ? "bg-cyan-500 hover:bg-cyan-600"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
           >
-            <PencilLine className="w-3 h-3" />
+            {test.isActive ? "Start Now" : "Test Inactive"}
           </button>
-          <button
-            onClick={handleDeleteClick}
-            className="flex items-center justify-center bg-red-600 text-white px-3 py-2 rounded-md text-xs hover:bg-red-700 transition"
+
+          {/* Status Toggle */}
+          <div
+            onClick={handleToggleClick}
+            className="flex items-center justify-center gap-2 p-2 bg-gray-50 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-md group"
           >
-            <Trash2 className="w-3 h-3" />
-          </button>
+            <div
+              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                test.isActive ? "bg-green-500" : "bg-red-500"
+              } group-hover:scale-110`}
+            ></div>
+            <span
+              className={`text-sm font-semibold transition-colors duration-200 ${
+                test.isActive ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {test.isActive ? "Active" : "Inactive"}
+            </span>
+            <div className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <svg
+                className="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+            </div>
+          </div>
+
+          {/* Admin Buttons */}
+          <div className="flex justify-center sm:justify-start lg:justify-center gap-2">
+            {isAdmin && (
+              <button
+                onClick={handleEditClick}
+                className="flex items-center justify-center gap-1 bg-blue-600 text-white px-3 py-2 rounded text-xs hover:bg-blue-700 transition"
+              >
+                <PencilLine className="w-3 h-3" />
+              </button>
+            )}
+
+            {isAdmin && (
+              <button
+                onClick={handleDeleteClick}
+                className="flex items-center justify-center gap-1 bg-red-600 text-white px-3 py-2 rounded text-xs hover:bg-red-700 transition"
+              >
+                <Trash2 className="w-3 h-3" />
+              </button>
+            )}
+          </div>
         </div>
+      ) : (
+        // USER VIEW BUTTON
+        <button
+          onClick={handleStartClick}
+          disabled={!test.isActive}
+          className={`w-full sm:w-auto px-4 sm:px-6 py-3 rounded-lg font-bold text-white text-sm sm:text-base transition ${
+            test.isActive
+              ? "bg-cyan-500 hover:bg-cyan-600"
+              : "bg-gray-300 cursor-not-allowed"
+          }`}
+        >
+          {test.isActive ? "Start Now" : "Test Inactive"}
+        </button>
       )}
     </div>
   </div>
 </div>
+
 
 
       {/* Confirmation Modal */}
