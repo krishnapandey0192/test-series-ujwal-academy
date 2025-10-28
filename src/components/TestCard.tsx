@@ -290,25 +290,22 @@ export default function TestCard({
         </div>
       </div>
 
-     {/* Desktop & Mobile Responsive Layout */}
-<div className="w-full">
-  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-white rounded-xl p-4 shadow-sm">
-    {/* ---------- LEFT CONTENT ---------- */}
+{/* Desktop Layout */}
+<div className="hidden sm:block">
+  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    {/* Left Content */}
     <div className="flex-1">
       {/* Badges */}
-      <div className="flex flex-wrap items-center gap-2 mb-3">
-        {/* LIVE TEST */}
+      <div className="flex items-center gap-2 mb-3 flex-wrap">
         <div className="flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-          <div className="w-1.5 h-1.5 bg-white rounded-full" />
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
           LIVE TEST
         </div>
 
-        {/* FREE */}
         <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
           FREE
         </div>
 
-        {/* ACTIVE / INACTIVE (Admin only) */}
         {showAdminActions && (
           <div
             onClick={handleToggleClick}
@@ -322,31 +319,29 @@ export default function TestCard({
               className={`w-1.5 h-1.5 rounded-full ${
                 test.isActive ? "bg-white" : "bg-white"
               }`}
-            />
+            ></div>
             {test.isActive ? "ACTIVE" : "INACTIVE"}
           </div>
         )}
       </div>
 
-      {/* Title + Users */}
+      {/* Title and User Count */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-        <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight text-center sm:text-left">
+        <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight">
           {test.title}
         </h2>
-
-        <div className="flex items-center gap-1 text-gray-500 text-sm justify-center sm:justify-start">
+        <div className="flex items-center gap-1 text-gray-500 text-sm">
           <Zap className="w-4 h-4 text-yellow-500 flex-shrink-0" />
           <span>
-            {test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : "1.5k"}{" "}
-            Users
+            {test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : "1.5k"} Users
           </span>
         </div>
       </div>
 
-      {/* Test Info */}
-      <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-gray-600 text-sm justify-center sm:justify-start">
+      {/* Test Metrics */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-500 text-sm">
         <div className="flex items-center gap-1">
-          <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+          <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
             <span className="text-xs">❓</span>
           </div>
           <span>{test.questionCount} Questions</span>
@@ -364,15 +359,14 @@ export default function TestCard({
       </div>
     </div>
 
-    {/* ---------- RIGHT CONTENT ---------- */}
-    <div className="flex-shrink-0 lg:ml-6 w-full sm:w-auto">
+    {/* Right Content - Action Button */}
+    <div className="flex-shrink-0 lg:ml-6">
       {showAdminActions ? (
-        <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
-          {/* Start Button */}
+        <div className="flex flex-col gap-2">
           <button
             onClick={handleStartClick}
             disabled={!test.isActive}
-            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-bold text-white text-sm sm:text-base transition ${
+            className={`w-full sm:w-auto px-1 sm:px-2 py-1 rounded-lg font-bold text-white transition text-sm sm:text-base ${
               test.isActive
                 ? "bg-cyan-500 hover:bg-cyan-600"
                 : "bg-gray-300 cursor-not-allowed"
@@ -381,42 +375,45 @@ export default function TestCard({
             {test.isActive ? "Start Now" : "Test Inactive"}
           </button>
 
-          {/* Status Toggle */}
+          {/* Active Status Toggle */}
           <div
             onClick={handleToggleClick}
-            className="flex items-center justify-center gap-2 p-2 bg-gray-50 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-md group"
+            className="flex items-center justify-center gap-2 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-md group"
           >
-            <div
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                test.isActive ? "bg-green-500" : "bg-red-500"
-              } group-hover:scale-110`}
-            ></div>
-            <span
-              className={`text-sm font-semibold transition-colors duration-200 ${
-                test.isActive ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {test.isActive ? "Active" : "Inactive"}
-            </span>
-            <div className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <svg
-                className="w-4 h-4 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex items-center gap-2">
+              <div
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  test.isActive ? "bg-green-500" : "bg-red-500"
+                } group-hover:scale-110`}
+              ></div>
+              <span
+                className={`text-sm font-semibold transition-colors duration-200 ${
+                  test.isActive ? "text-green-600" : "text-red-600"
+                }`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
+                {test.isActive ? "Active" : "Inactive"}
+              </span>
+
+              <div className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
 
-          {/* Admin Buttons */}
-          <div className="flex justify-center sm:justify-start lg:justify-center gap-2">
+          {/* Edit/Delete Buttons */}
+          <div className="flex flex-col sm:flex-row gap-2">
             {isAdmin && (
               <button
                 onClick={handleEditClick}
@@ -437,11 +434,10 @@ export default function TestCard({
           </div>
         </div>
       ) : (
-        // USER VIEW BUTTON
         <button
           onClick={handleStartClick}
           disabled={!test.isActive}
-          className={`w-full sm:w-auto px-4 sm:px-6 py-3 rounded-lg font-bold text-white text-sm sm:text-base transition ${
+          className={`w-full sm:w-auto px-4 sm:px-6 py-3 rounded-lg font-bold text-white transition text-sm sm:text-base ${
             test.isActive
               ? "bg-cyan-500 hover:bg-cyan-600"
               : "bg-gray-300 cursor-not-allowed"
@@ -453,6 +449,7 @@ export default function TestCard({
     </div>
   </div>
 </div>
+
 
 
 
