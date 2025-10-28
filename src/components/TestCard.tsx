@@ -291,7 +291,7 @@ export default function TestCard({
       </div>
 
       {/* Modern Card */}
-        <div>
+        <div className="hidden sm:block>
           <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
             {/* Top Accent Bar */}
             <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"></div>
