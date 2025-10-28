@@ -290,144 +290,165 @@ export default function TestCard({
         </div>
       </div>
 
-      {/* Modern Card */}
-        <div className="hidden sm:block">
-          <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
-            {/* Top Accent Bar */}
-            <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"></div>
-            
-            <div className="p-4 lg:p-5">
-              {/* Row 1: Badges - Full Width */}
-              <div className="flex items-center gap-2 mb-3 flex-wrap">
-                <div className="flex items-center gap-1 bg-gradient-to-r from-red-500 to-pink-500 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow-md shadow-red-500/20 animate-pulse">
-                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  LIVE TEST
-                </div>
+     {/* Desktop Layout */}
+<div className="hidden sm:block">
+  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    {/* Left Content */}
+    <div className="flex-1">
+      {/* Badges */}
+      <div className="flex items-center gap-2 mb-3 flex-wrap">
+        <div className="flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          LIVE TEST
+        </div>
 
-                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow-md shadow-green-500/20">
-                  FREE
-                </div>
+        <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+          FREE
+        </div>
 
-                {showAdminActions && (
-                  <div
-                    onClick={handleToggleClick}
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer transition-all duration-300 hover:scale-105 shadow-md ${
-                      test.isActive
-                        ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-green-500/20 hover:shadow-green-500/40"
-                        : "bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/20 hover:shadow-red-500/40"
-                    }`}
-                  >
-                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                    {test.isActive ? "ACTIVE" : "INACTIVE"}
-                  </div>
-                )}
-              </div>
+        {showAdminActions && (
+          <div
+            onClick={handleToggleClick}
+            className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
+              test.isActive
+                ? "bg-green-500 text-white hover:bg-green-600"
+                : "bg-red-500 text-white hover:bg-red-600"
+            }`}
+          >
+            <div
+              className={`w-1.5 h-1.5 rounded-full ${
+                test.isActive ? "bg-white" : "bg-white"
+              }`}
+            ></div>
+            {test.isActive ? "ACTIVE" : "INACTIVE"}
+          </div>
+        )}
+      </div>
 
-              {/* Row 2: Title - Full Width */}
-              <div className="mb-3">
-                <h2 className="text-lg lg:text-xl font-bold text-gray-900 leading-tight bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
-                  {test.title}
-                </h2>
-              </div>
+      {/* Title and User Count */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+        <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight">
+          {test.title}
+        </h2>
+        <div className="flex items-center gap-1 text-gray-500 text-sm">
+          <Zap className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+          <span>
+            {test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : "1.5k"} Users
+          </span>
+        </div>
+      </div>
 
-              {/* Row 3: User Count - Full Width */}
-              {/* <div className="mb-3">
-                <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 px-3 py-1.5 rounded-lg">
-                  <Zap className="w-4 h-4 text-yellow-500" fill="currentColor" />
-                  <span className="text-xs font-semibold text-gray-700">
-                    {test.userCount ? `${(test.userCount / 1000).toFixed(1)}k` : "1.5k"} Users
-                  </span>
-                </div>
-              </div> */}
+      {/* Test Metrics */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-500 text-sm">
+        <div className="flex items-center gap-1">
+          <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-xs">❓</span>
+          </div>
+          <span>{test.questionCount} Questions</span>
+        </div>
 
-              {/* Row 4: Metrics - Full Width */}
-              <div className="mb-4">
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="flex items-center gap-2 bg-gradient-to-br from-blue-50 to-cyan-50 p-2.5 rounded-lg border border-blue-100 hover:shadow-md transition-shadow">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-500/20">
-                      <span className="text-sm">❓</span>
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-500 font-medium">Questions</div>
-                      <div className="text-sm font-bold text-gray-900">{test.questionCount}</div>
-                    </div>
-                  </div>
+        <div className="flex items-center gap-1">
+          <FileText className="w-4 h-4 flex-shrink-0" />
+          <span>{test.totalMarks} Marks</span>
+        </div>
 
-                  <div className="flex items-center gap-2 bg-gradient-to-br from-purple-50 to-pink-50 p-2.5 rounded-lg border border-purple-100 hover:shadow-md transition-shadow">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-purple-500/20">
-                      <FileText className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-500 font-medium">Marks</div>
-                      <div className="text-sm font-bold text-gray-900">{test.totalMarks}</div>
-                    </div>
-                  </div>
+        <div className="flex items-center gap-1">
+          <Clock className="w-4 h-4 flex-shrink-0" />
+          <span>{test.duration} Mins</span>
+        </div>
+      </div>
+    </div>
 
-                  <div className="flex items-center gap-2 bg-gradient-to-br from-orange-50 to-red-50 p-2.5 rounded-lg border border-orange-100 hover:shadow-md transition-shadow">
-                    <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-orange-500/20">
-                      <Clock className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-500 font-medium">Duration</div>
-                      <div className="text-sm font-bold text-gray-900">{test.duration} Min</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    {/* Right Content - Action Button */}
+    <div className="flex-shrink-0 lg:ml-6">
+      {showAdminActions ? (
+        <div className="flex flex-col gap-2">
+          <button
+            onClick={handleStartClick}
+            disabled={!test.isActive}
+            className={`w-full sm:w-auto px-1 sm:px-2 py-1 rounded-lg font-bold text-white transition text-sm sm:text-base ${
+              test.isActive
+                ? "bg-cyan-500 hover:bg-cyan-600"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
+          >
+            {test.isActive ? "Start Now" : "Test Inactive"}
+          </button>
 
-              {/* Row 5: Actions - Full Width */}
-              <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
-                {showAdminActions ? (
-                  <>
-                    <button
-                      onClick={handleStartClick}
-                      disabled={!test.isActive}
-                      className={`flex-1 px-4 py-2.5 rounded-lg font-bold text-white transition-all duration-300 text-sm shadow-md ${
-                        test.isActive
-                          ? "bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 hover:shadow-lg hover:scale-[1.02] shadow-cyan-500/20"
-                          : "bg-gray-300 cursor-not-allowed"
-                      }`}
-                    >
-                      {test.isActive ? "Start Now →" : "Test Inactive"}
-                    </button>
+          {/* Active Status Toggle */}
+          <div
+            onClick={handleToggleClick}
+            className="flex items-center justify-center gap-2 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-md group"
+          >
+            <div className="flex items-center gap-2">
+              <div
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  test.isActive ? "bg-green-500" : "bg-red-500"
+                } group-hover:scale-110`}
+              ></div>
+              <span
+                className={`text-sm font-semibold transition-colors duration-200 ${
+                  test.isActive ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {test.isActive ? "Active" : "Inactive"}
+              </span>
 
-                    {isAdmin && (
-                      <>
-                        <button
-                          onClick={handleEditClick}
-                          className="flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md shadow-blue-600/20 hover:shadow-lg hover:scale-[1.02] text-sm"
-                        >
-                          <PencilLine className="w-3.5 h-3.5" />
-                          <span className="hidden lg:inline">Edit</span>
-                        </button>
-
-                        <button
-                          onClick={handleDeleteClick}
-                          className="flex items-center justify-center gap-1.5 bg-gradient-to-r from-red-600 to-pink-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-md shadow-red-600/20 hover:shadow-lg hover:scale-[1.02] text-sm"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                          <span className="hidden lg:inline">Delete</span>
-                        </button>
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <button
-                    onClick={handleStartClick}
-                    disabled={!test.isActive}
-                    className={`w-full px-4 py-2.5 rounded-lg font-bold text-white transition-all duration-300 text-sm shadow-md ${
-                      test.isActive
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 hover:shadow-lg hover:scale-[1.02] shadow-cyan-500/20"
-                        : "bg-gray-300 cursor-not-allowed"
-                    }`}
-                  >
-                    {test.isActive ? "Start Now →" : "Test Inactive"}
-                  </button>
-                )}
+              <div className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
               </div>
             </div>
           </div>
+
+          {/* Edit/Delete Buttons */}
+          <div className="flex flex-col sm:flex-row gap-2">
+            {isAdmin && (
+              <button
+                onClick={handleEditClick}
+                className="flex items-center justify-center gap-1 bg-blue-600 text-white px-3 py-2 rounded text-xs hover:bg-blue-700 transition"
+              >
+                <PencilLine className="w-3 h-3" />
+              </button>
+            )}
+
+            {isAdmin && (
+              <button
+                onClick={handleDeleteClick}
+                className="flex items-center justify-center gap-1 bg-red-600 text-white px-3 py-2 rounded text-xs hover:bg-red-700 transition"
+              >
+                <Trash2 className="w-3 h-3" />
+              </button>
+            )}
+          </div>
         </div>
+      ) : (
+        <button
+          onClick={handleStartClick}
+          disabled={!test.isActive}
+          className={`w-full sm:w-auto px-4 sm:px-6 py-3 rounded-lg font-bold text-white transition text-sm sm:text-base ${
+            test.isActive
+              ? "bg-cyan-500 hover:bg-cyan-600"
+              : "bg-gray-300 cursor-not-allowed"
+          }`}
+        >
+          {test.isActive ? "Start Now" : "Test Inactive"}
+        </button>
+      )}
+    </div>
+  </div>
+</div>
 
 
 
