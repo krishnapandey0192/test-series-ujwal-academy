@@ -6,6 +6,7 @@ import TestSeriesCategory from "./components/TestSeriesCategory";
 import TestSeriesTests from "./components/TestSeriesTests";
 import Login from "./components/Login";
 import Register from "./components/Register";
+
 import TestExperience from "./components/TestExperience";
 import AdminLayout from "./components/AdminLayout";
 import AdminDashboard from "./components/AdminDashboard";
@@ -22,6 +23,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 import RefundPolicy from "./components/RefundPolicy";
 import StudentAnalysis from "./pages/StudentAnalysis";
+import ResetPassword from "./components/ResetPassword";
 
 const AppRouter = () => (
   <>
@@ -89,6 +91,14 @@ const AppRouter = () => (
           element={
             //   <Layout>
             <Login />
+            //   </Layout>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            //   <Layout>
+            <ResetPassword />
             //   </Layout>
           }
         />
