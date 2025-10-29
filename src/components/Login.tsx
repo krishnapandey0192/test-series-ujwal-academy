@@ -13,6 +13,9 @@ const Login = () => {
   });
   const [error, setError] = useState("");
   const [loadingLogin, setLoadingLogin] = useState(false);
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
+  const [loadingForgotPassword, setLoadingForgotPassword] = useState(false);
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -57,6 +60,36 @@ const Login = () => {
     } finally {
       setLoadingLogin(false);
     }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!forgotPasswordEmail.trim()) {
+      toast.error("Please enter your email address");
+      return;
+    }
+
+    if (loadingForgotPassword) return;
+    setLoadingForgotPassword(true);
+
+    try {
+      await axiosInstance.post("/api/auth/forgot-password", {
+        email: forgotPasswordEmail,
+      });
+      
+      toast.success(`Password reset link sent to ${forgotPasswordEmail}`);
+      setShowForgotPasswordModal(false);
+      setForgotPasswordEmail("");
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || "Failed to send reset email. Please try again.";
+      toast.error(msg);
+    } finally {
+      setLoadingForgotPassword(false);
+    }
+  };
+
+  const closeModal = () => {
+    setShowForgotPasswordModal(false);
+    setForgotPasswordEmail("");
   };
 
   return (
@@ -213,7 +246,106 @@ const Login = () => {
             "Login"
           )}
         </button>
+
+        {/* Forgot Password Link */}
+        <div className="text-center mt-4">
+          <button
+            onClick={() => setShowForgotPasswordModal(true)}
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium underline"
+            disabled={loadingLogin}
+          >
+            Forgot Password?
+          </button>
+        </div>
       </div>
+
+      {/* Forgot Password Modal */}
+      {showForgotPasswordModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Reset Password
+              </h3>
+              <button
+                onClick={closeModal}
+                className="text-gray-400 hover:text-gray-600 transition"
+                disabled={loadingForgotPassword}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <p className="text-gray-600 text-sm mb-6">
+              Enter your email address and we'll send you a link to reset your password.
+            </p>
+
+            <div className="mb-6">
+              <label
+                htmlFor="forgotEmail"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Email Address
+              </label>
+              <input
+                id="forgotEmail"
+                type="email"
+                value={forgotPasswordEmail}
+                onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                disabled={loadingForgotPassword}
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={closeModal}
+                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
+                disabled={loadingForgotPassword}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleForgotPassword}
+                className={`flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium flex items-center justify-center gap-2 ${
+                  loadingForgotPassword ? "opacity-70 cursor-not-allowed" : ""
+                }`}
+                disabled={loadingForgotPassword}
+              >
+                {loadingForgotPassword ? (
+                  <>
+                    <svg
+                      className="animate-spin h-4 w-4 text-white"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  "Send Reset Link"
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
