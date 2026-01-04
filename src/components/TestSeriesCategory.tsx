@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-const icons = ["📚", "📝", "🎯", "🚀", "🔬", "🧠", "💡", "🏆", "📖", "🧪"];
+// const icons = ["📚", "📝", "🎯", "🚀", "🔬", "🧠", "💡", "🏆", "📖", "🧪"];
 
 const TestSeriesCategory = () => {
   const { id } = useParams();
@@ -64,7 +64,7 @@ const TestSeriesCategory = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {subcategories.map((subcategory, idx) => (
+            {subcategories.map((subcategory, _idx) => (
               <div
                 key={subcategory._id}
                 className="bg-gradient-to-br from-blue-400/20 to-purple-500/20 backdrop-blur-sm rounded-xl shadow p-2 flex flex-col items-center gap-2 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
