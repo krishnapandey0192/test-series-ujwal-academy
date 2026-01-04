@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
+import { Helmet } from "react-helmet-async";
 
-const icons = ["📚", "📝", "🎯", "🚀", "🔬", "🧠", "💡", "🏆", "📖", "🧪"];
+// const icons = ["📚", "📝", "🎯", "🚀", "🔬", "🧠", "💡", "🏆", "📖", "🧪"];
 
 const TestSeries = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -27,6 +28,44 @@ const TestSeries = () => {
   }, []);
 
   return (
+    <>
+     {/* ================= SEO ================= */}
+      <Helmet>
+        <title>
+          Online Test Series | SSC, Railway, MPSI – Ujjwal Academy Mauganj
+        </title>
+
+        <meta
+          name="description"
+          content="Attempt high-quality online test series by Ujjwal Academy Mauganj for SSC, Railway, MPSI and other government exams. Practice category-wise mock tests and improve your rank."
+        />
+
+        <meta
+          name="keywords"
+          content="SSC Online Test Series Mauganj, Railway Mock Test Mauganj, MPSI Test Series, Government Exam Online Tests, Ujjwal Academy Test Series"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://test-series-ujwal-academy.vercel.app/test-series"
+        />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Ujjwal Academy Mauganj",
+            "url": "https://test-series-ujwal-academy.vercel.app",
+            "description": "Online test series platform for SSC, Railway and MP government exams.",
+            "areaServed": "Mauganj, Madhya Pradesh"
+          }
+        `}
+        </script>
+      </Helmet>
     <section className="py-12 bg-gray-50 min-h-[60vh]">
       <div className="max-w-5xl mx-auto px-4">
         {/* <h2 className="text-3xl font-bold text-blue-700 mb-8">
@@ -66,6 +105,7 @@ const TestSeries = () => {
         )}
       </div>
     </section>
+    </>
   );
 };
 

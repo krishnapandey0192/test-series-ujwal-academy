@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import axiosInstance from "../utils/axiosInstance";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
@@ -48,6 +49,50 @@ const Register = () => {
   };
 
   return (
+    <>
+     {/* ================= SEO ================= */}
+      <Helmet>
+        <title>
+          Register at Ujjwal Academy Mauganj | SSC, Railway & MP Exam Coaching
+        </title>
+
+        <meta
+          name="description"
+          content="Register now at Ujjwal Academy Mauganj to join SSC, Railway, MPSI and government exam test series. Trusted coaching institute in Mauganj."
+        />
+
+        <meta
+          name="keywords"
+          content="Ujjwal Academy Mauganj Register, SSC Coaching Mauganj Registration, Railway Exam Coaching Mauganj, Government Exam Test Series Mauganj"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://test-series-ujwal-academy.vercel.app/register"
+        />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Ujjwal Academy Mauganj",
+            "url": "https://test-series-ujwal-academy.vercel.app",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Mauganj",
+              "addressRegion": "Madhya Pradesh",
+              "addressCountry": "IN"
+            }
+          }
+        `}
+        </script>
+      </Helmet>
+
+
     <div className="min-h-screen bg-gradient-to-br from-green-100 to-green-300 flex items-center justify-center px-2 sm:px-4 md:px-8 py-6">
       <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-md md:max-w-xl relative">
         {/* Navigation Links */}
@@ -212,6 +257,7 @@ const Register = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

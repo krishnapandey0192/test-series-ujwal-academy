@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
+import { Helmet } from "react-helmet-async";
 
 const medalColors = [
   "bg-yellow-400 text-yellow-900 border-yellow-300",
@@ -43,6 +44,44 @@ const Leaderboard: React.FC = () => {
   };
 
   return (
+    <>
+    {/* ================= SEO ================= */}
+      <Helmet>
+        <title>
+          Ujjwal Academy Mauganj Leaderboard | Top Performers & Test Results
+        </title>
+
+        <meta
+          name="description"
+          content="Check Ujjwal Academy Mauganj leaderboard to see top performers, highest scores, and best results in SSC, Railway, MPSI & government exam test series."
+        />
+
+        <meta
+          name="keywords"
+          content="Ujjwal Academy Mauganj Leaderboard, SSC Toppers Mauganj, Railway Exam Results Mauganj, Government Exam Test Series Rank"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <link
+          rel="canonical"
+          href="https://test-series-ujwal-academy.vercel.app/leaderboard"
+        />
+
+        {/* Structured Data for Results */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Ujjwal Academy Mauganj",
+            "url": "https://test-series-ujwal-academy.vercel.app",
+            "description": "Competitive exam coaching institute providing SSC, Railway and MP government exam preparation in Mauganj.",
+            "areaServed": "Mauganj, Madhya Pradesh"
+          }
+        `}
+        </script>
+      </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 p-6">
       <h2 className="text-4xl font-extrabold text-center text-green-700 mb-10 drop-shadow-lg">
         Leaderboard
@@ -114,6 +153,7 @@ const Leaderboard: React.FC = () => {
         </div>
       )}
     </div>
+      </>
   );
 };
 
