@@ -1,5 +1,5 @@
-import React from 'react';
-import { Target, Users, Award, Zap, TrendingUp, Shield, Clock, Heart, Trophy } from 'lucide-react';
+import { Target, Users, Award, Zap, TrendingUp, Shield, Heart, Trophy } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
   const values = [
@@ -37,6 +37,33 @@ const About = () => {
   ];
 
   return (
+    <>
+     {/* SEO Helmet */}
+      <Helmet>
+        <title>Ujjawal Academy Mauganj | Best Government Exam Coaching Institute</title>
+        <meta 
+          name="description" 
+          content="Ujjawal Academy Mauganj offers premium coaching for competitive government exams. Expert faculty, proven results, modern teaching methods, and personalized mentorship for aspirants across India." 
+        />
+        <meta 
+          name="keywords" 
+          content="Ujjawal Academy, Government Exam Coaching, SSC Coaching, Banking Exam Coaching, UPSC Coaching, Competitive Exam Preparation, Mauganj Coaching Institute, Top Coaching Institute India" 
+        />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Ujjawal Academy Mauganj | Best Government Exam Coaching Institute" />
+        <meta property="og:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjawal Academy to achieve your career goals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ujjawalacademymauganj.com/about" />
+        <meta property="og:image" content="https://www.ujjawalacademymauganj.com/og-image.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ujjawal Academy Mauganj | Best Government Exam Coaching Institute" />
+        <meta name="twitter:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjawal Academy to achieve your career goals." />
+        <meta name="twitter:image" content="https://www.ujjawalacademymauganj.com/og-image.jpg" />
+      </Helmet>
     <section id="about" className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
       {/* Background Animation */}
       <div className="absolute inset-0">
@@ -133,6 +160,7 @@ const About = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
