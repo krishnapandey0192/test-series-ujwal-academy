@@ -18,7 +18,7 @@ const SEO = () => {
       <meta name="robots" content="index, follow" />
       <link
         rel="canonical"
-        href="https://test-series-ujwal-academy.vercel.app/"
+        href="https://ujjwalacademymauganj.in"
       />
 
       {/* OPEN GRAPH */}
@@ -33,7 +33,7 @@ const SEO = () => {
       />
       <meta
         property="og:url"
-        content="https://test-series-ujwal-academy.vercel.app/"
+        content="https://ujjwalacademymauganj.in"
       />
       <meta property="og:site_name" content="Ujjwal Academy Mauganj" />
 

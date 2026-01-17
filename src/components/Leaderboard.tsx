@@ -65,7 +65,7 @@ const Leaderboard: React.FC = () => {
 
         <link
           rel="canonical"
-          href="https://test-series-ujwal-academy.vercel.app/leaderboard"
+          href="https://ujjwalacademymauganj.in/leaderboard"
         />
 
         {/* Structured Data for Results */}
@@ -75,7 +75,7 @@ const Leaderboard: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
             "name": "Ujjwal Academy Mauganj",
-            "url": "https://test-series-ujwal-academy.vercel.app",
+            "url": "https://ujjwalacademymauganj.in",
             "description": "Competitive exam coaching institute providing SSC, Railway and MP government exam preparation in Mauganj.",
             "areaServed": "Mauganj, Madhya Pradesh"
           }

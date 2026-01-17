@@ -49,7 +49,7 @@ const TestSeries = () => {
 
         <link
           rel="canonical"
-          href="https://test-series-ujwal-academy.vercel.app/test-series"
+          href="https://ujjwalacademymauganj.in/test-series"
         />
 
         {/* Structured Data */}
@@ -59,7 +59,7 @@ const TestSeries = () => {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
             "name": "Ujjwal Academy Mauganj",
-            "url": "https://test-series-ujwal-academy.vercel.app",
+            "url": "https://ujjwalacademymauganj.in",
             "description": "Online test series platform for SSC, Railway and MP government exams.",
             "areaServed": "Mauganj, Madhya Pradesh"
           }

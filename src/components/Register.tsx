@@ -70,7 +70,7 @@ const Register = () => {
 
         <link
           rel="canonical"
-          href="https://test-series-ujwal-academy.vercel.app/register"
+          href="https://ujjwalacademymauganj.in/register"
         />
 
         {/* Structured Data */}
@@ -80,7 +80,7 @@ const Register = () => {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
             "name": "Ujjwal Academy Mauganj",
-            "url": "https://test-series-ujwal-academy.vercel.app",
+            "url": "https://ujjwalacademymauganj.in",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Mauganj",

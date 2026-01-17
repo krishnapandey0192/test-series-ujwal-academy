@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://test-series-ujwal-academy.vercel.app/sitemap.xml
+Sitemap: https://ujjwalacademymauganj.in/sitemap.xml
