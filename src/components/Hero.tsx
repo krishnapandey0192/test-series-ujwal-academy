@@ -35,7 +35,7 @@ const Hero = () => {
 
       <section
         id="home"
-        className="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden"
+        className="pt-1 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -59,7 +59,7 @@ const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight animate-slide-in-left">
+            <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-tight animate-slide-in-left">
               Your Success is Our
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent block animate-slide-in-right">
                 Mission
@@ -67,7 +67,7 @@ const Hero = () => {
             </h1>
 
             <p
-              className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up"
+              className="text-xl md:text-2xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed animate-fade-in-up"
               style={{ animationDelay: "0.4s" }}
             >
               Master competitive exams with expert guidance. From SSC to
@@ -76,7 +76,7 @@ const Hero = () => {
             </p>
 
             <div
-              className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-6 justify-center mb-8 animate-fade-in-up"
               style={{ animationDelay: "0.6s" }}
             >
               <button className="btn-hover-effect bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-10 py-5 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 flex items-center justify-center group">
@@ -117,7 +117,7 @@ const Hero = () => {
             {/* Floating Achievement Badges */}
             <div className="absolute top-20 left-10 animate-float hidden lg:block">
               <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                🏆 Grand Opening: Alpha Institute 2025
+                🏆 Grand Opening: Alpha Institute 2026
               </div>
             </div>
 
@@ -135,7 +135,7 @@ const Hero = () => {
               style={{ animationDelay: "2s" }}
             >
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                � Personalized Mentorship & Modern Campus
+                🎓 Personalized Mentorship & Modern Campus
               </div>
             </div>
           </div>

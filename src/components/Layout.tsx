@@ -6,7 +6,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="pt-16 min-h-screen bg-gray-50">{children}</main>
+      <main className="pt-1 min-h-screen bg-gray-50">{children}</main>
       <Footer />
     </>
   );
