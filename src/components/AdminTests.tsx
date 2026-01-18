@@ -44,7 +44,7 @@ const AdminTests = () => {
     categoryId: "",
   });
   const [categories, setCategories] = useState<{ _id: string; name: string }[]>(
-    []
+    [],
   );
   const [errors, setErrors] = useState({
     title: "",
@@ -187,7 +187,6 @@ const AdminTests = () => {
     // No file upload, nothing to reset
   };
 
-
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
@@ -296,8 +295,9 @@ const AdminTests = () => {
                     value={form.title}
                     onChange={handleChange}
                     placeholder="Enter test title"
-                    className={`w-full border ${errors.title ? "border-red-500" : "border-gray-300"
-                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${
+                      errors.title ? "border-red-500" : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                   />
                   {errors.title && (
                     <p className="text-red-500 text-xs mt-1">{errors.title}</p>
@@ -313,8 +313,9 @@ const AdminTests = () => {
                     value={form.examType}
                     onChange={handleChange}
                     placeholder="e.g. Mock, Practice"
-                    className={`w-full border ${errors.examType ? "border-red-500" : "border-gray-300"
-                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${
+                      errors.examType ? "border-red-500" : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                   />
                   {errors.examType && (
                     <p className="text-red-500 text-xs mt-1">
@@ -332,8 +333,9 @@ const AdminTests = () => {
                     value={form.duration}
                     onChange={handleChange}
                     placeholder="e.g. 60"
-                    className={`w-full border ${errors.duration ? "border-red-500" : "border-gray-300"
-                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${
+                      errors.duration ? "border-red-500" : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.duration && (
@@ -352,8 +354,9 @@ const AdminTests = () => {
                     value={form.totalMarks}
                     onChange={handleChange}
                     placeholder="e.g. 100"
-                    className={`w-full border ${errors.totalMarks ? "border-red-500" : "border-gray-300"
-                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${
+                      errors.totalMarks ? "border-red-500" : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.totalMarks && (
@@ -372,10 +375,11 @@ const AdminTests = () => {
                     value={form.questionCount}
                     onChange={handleChange}
                     placeholder="e.g. 50"
-                    className={`w-full border ${errors.questionCount
-                      ? "border-red-500"
-                      : "border-gray-300"
-                      } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`w-full border ${
+                      errors.questionCount
+                        ? "border-red-500"
+                        : "border-gray-300"
+                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     min="1"
                   />
                   {errors.questionCount && (
@@ -395,8 +399,9 @@ const AdminTests = () => {
                   name="startDate"
                   value={form.startDate}
                   onChange={handleChange}
-                  className={`w-full border ${errors.startDate ? "border-red-500" : "border-gray-300"
-                    } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white`}
+                  className={`w-full border ${
+                    errors.startDate ? "border-red-500" : "border-gray-300"
+                  } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white`}
                 />
                 {errors.startDate && (
                   <p className="text-red-500 text-xs mt-1">
@@ -411,21 +416,24 @@ const AdminTests = () => {
                 </label>
                 <button
                   type="button"
-                  className={`relative inline-flex h-6 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors duration-200 focus:outline-none ${form.isActive ? "bg-green-500" : "bg-gray-300"
-                    }`}
+                  className={`relative inline-flex h-6 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors duration-200 focus:outline-none ${
+                    form.isActive ? "bg-green-500" : "bg-gray-300"
+                  }`}
                   onClick={() =>
                     setForm((prev) => ({ ...prev, isActive: !prev.isActive }))
                   }
                   aria-pressed={form.isActive}
                 >
                   <span
-                    className={`inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition-transform duration-200 ${form.isActive ? "translate-x-6" : "translate-x-1"
-                      }`}
+                    className={`inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition-transform duration-200 ${
+                      form.isActive ? "translate-x-6" : "translate-x-1"
+                    }`}
                   />
                 </button>
                 <span
-                  className={`ml-3 text-sm font-semibold ${form.isActive ? "text-green-600" : "text-gray-500"
-                    }`}
+                  className={`ml-3 text-sm font-semibold ${
+                    form.isActive ? "text-green-600" : "text-gray-500"
+                  }`}
                 >
                   {form.isActive ? "Active" : "Inactive"}
                 </span>

@@ -96,8 +96,8 @@ const Banner = () => {
             index === currentSlide
               ? "translate-x-0"
               : index < currentSlide
-              ? "-translate-x-full"
-              : "translate-x-full"
+                ? "-translate-x-full"
+                : "translate-x-full"
           }`}
         >
           <div

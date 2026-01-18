@@ -7,7 +7,7 @@ import Courses from "./components/Courses";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Leaderboard from "./components/Leaderboard";
 
@@ -21,7 +21,7 @@ function App() {
       <Features />
       <Testimonials />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
       <WhatsAppButton />
       <Routes>
         <Route path="/leaderboard" element={<Leaderboard />} />

@@ -7,7 +7,7 @@ type AdminLayoutProps = {
   children?: React.ReactNode;
 };
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
+const AdminLayout: React.FC<AdminLayoutProps> = () => {
   return (
     <div className="flex h-screen relative">
       <Sidebar />

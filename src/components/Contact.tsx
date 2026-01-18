@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    course: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Create WhatsApp message
     const whatsappMessage = `Hi! I'm interested in joining Ujjwal Academy.
     
@@ -28,50 +32,74 @@ Email: ${formData.email}
 Phone: ${formData.phone}
 Course: ${formData.course}
 Message: ${formData.message}`;
-    
+
     // Open WhatsApp with pre-filled message
     const whatsappUrl = `https://wa.me/+918878979958?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
-    
+    window.open(whatsappUrl, "_blank");
+
     // Reset form
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      course: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      course: "",
+      message: "",
     });
-    
-    alert('Thank you for your interest! You will be redirected to WhatsApp to send your inquiry.');
+
+    alert(
+      "Thank you for your interest! You will be redirected to WhatsApp to send your inquiry.",
+    );
   };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Our Location',
-      details: ['Behind SKNPG college', 'Guru vashisht iti building 1st floor, Mauganj | Rewa', 'Madhya Pradesh - 486331']
+      title: "Our Location",
+      details: [
+        "Behind SKNPG college",
+        "Guru vashisht iti building 1st floor, Mauganj | Rewa",
+        "Madhya Pradesh - 486331",
+      ],
     },
     {
       icon: Phone,
-      title: 'Phone Numbers',
-      details: ['+91 8878979958', '+91 7047722597', '+91 8319098700']
+      title: "Phone Numbers",
+      details: ["+91 8878979958", "+91 7047722597", "+91 8319098700"],
     },
     {
       icon: Mail,
-      title: 'Email Address',
-      details: ['ujjwalacedemymaugnaj@gmail.com', 'admissions@ujjwalacademymauganj.in', 'support@ujjwalacademymauganj.in']
+      title: "Email Address",
+      details: [
+        "ujjwalacedemymaugnaj@gmail.com",
+        "admissions@ujjwalacademymauganj.in",
+        "support@ujjwalacademymauganj.in",
+      ],
     },
     {
       icon: Clock,
-      title: 'Office Hours',
-      details: ['Monday - Saturday: 9:00 AM - 8:00 PM', 'Sunday: 10:00 AM - 6:00 PM', 'Public Holidays: Closed']
-    }
+      title: "Office Hours",
+      details: [
+        "Monday - Saturday: 9:00 AM - 8:00 PM",
+        "Sunday: 10:00 AM - 6:00 PM",
+        "Public Holidays: Closed",
+      ],
+    },
   ];
 
   const courses = [
-    'SSC CGL', 'SSC CPO', 'SSC GD', 'SSC CHSL', 'MPSI', 'MP Police', 
-    'Patwari', 'Railway Group D', 'Railway NTPC', 'Railway ALP', 
-    'Technician', 'Jail Prahari', 'Van Rakhshak'
+    "SSC CGL",
+    "SSC CPO",
+    "SSC GD",
+    "SSC CHSL",
+    "MPSI",
+    "MP Police",
+    "Patwari",
+    "Railway Group D",
+    "Railway NTPC",
+    "Railway ALP",
+    "Technician",
+    "Jail Prahari",
+    "Van Rakhshak",
   ];
 
   return (
@@ -82,18 +110,24 @@ Message: ${formData.message}`;
             Get In <span className="text-blue-600">Touch</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to start your journey? Contact us today for more information about our courses and admissions
+            Ready to start your journey? Contact us today for more information
+            about our courses and admissions
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-gray-50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              Send us a Message
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -108,7 +142,10 @@ Message: ${formData.message}`;
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -126,7 +163,10 @@ Message: ${formData.message}`;
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Phone Number *
                   </label>
                   <input
@@ -141,7 +181,10 @@ Message: ${formData.message}`;
                   />
                 </div>
                 <div>
-                  <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="course"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Course Interest *
                   </label>
                   <select
@@ -154,14 +197,19 @@ Message: ${formData.message}`;
                   >
                     <option value="">Select a course</option>
                     {courses.map((course, index) => (
-                      <option key={index} value={course}>{course}</option>
+                      <option key={index} value={course}>
+                        {course}
+                      </option>
                     ))}
                   </select>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -187,7 +235,9 @@ Message: ${formData.message}`;
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -195,9 +245,13 @@ Message: ${formData.message}`;
                       <info.icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">{info.title}</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">
+                        {info.title}
+                      </h4>
                       {info.details.map((detail, idx) => (
-                        <p key={idx} className="text-gray-600">{detail}</p>
+                        <p key={idx} className="text-gray-600">
+                          {detail}
+                        </p>
                       ))}
                     </div>
                   </div>

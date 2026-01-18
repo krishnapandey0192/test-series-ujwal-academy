@@ -39,7 +39,7 @@ const TestPage = () => {
           setError("not-started-403");
         } else {
           setError(
-            err?.response?.data?.message || "Failed to fetch questions."
+            err?.response?.data?.message || "Failed to fetch questions.",
           );
         }
       } finally {
@@ -88,7 +88,7 @@ const TestPage = () => {
   const toggleReview = () => {
     const id = questions[currentQ]?._id || questions[currentQ]?.id;
     setReview((prev: string[]) =>
-      prev.includes(id) ? prev.filter((r: string) => r !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((r: string) => r !== id) : [...prev, id],
     );
   };
 
@@ -150,7 +150,7 @@ const TestPage = () => {
     ([questionId, selectedOption]) => ({
       questionId,
       selectedOption,
-    })
+    }),
   );
 
   const handleSubmit = async () => {
@@ -214,40 +214,40 @@ const TestPage = () => {
         </div>
         <div className="bg-white p-3 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-
             <h3 className="text-sm font-semibold mb-1 md:mb-0">
               Q{currentQ + 1}. {questions[currentQ]?.questionText}
             </h3>
-
           </div>
 
           <div className="space-y-2">
             {(questions[currentQ]?.options || []).map((opt: string) => (
               <label
                 key={opt}
-                className={`block text-sm p-2 border rounded-lg cursor-pointer transition ${answers[
-                  questions[currentQ]?._id || questions[currentQ]?.id
-                ] === opt
-                  ? "bg-blue-100 border-blue-500"
-                  : "bg-white border-gray-300 hover:bg-gray-50"
-                  }`}
+                className={`block text-sm p-2 border rounded-lg cursor-pointer transition ${
+                  answers[
+                    questions[currentQ]?._id || questions[currentQ]?.id
+                  ] === opt
+                    ? "bg-blue-100 border-blue-500"
+                    : "bg-white border-gray-300 hover:bg-gray-50"
+                }`}
                 onClick={() => handleAnswer(opt)}
               >
                 <span className="inline-block align-middle mr-2">
                   <span
-                    className={`w-4 h-4 inline-block rounded-full border-2 ${answers[
-                      questions[currentQ]?._id || questions[currentQ]?.id
-                    ] === opt
-                      ? "border-blue-600 bg-blue-600"
-                      : "border-gray-400 bg-white"
-                      }`}
+                    className={`w-4 h-4 inline-block rounded-full border-2 ${
+                      answers[
+                        questions[currentQ]?._id || questions[currentQ]?.id
+                      ] === opt
+                        ? "border-blue-600 bg-blue-600"
+                        : "border-gray-400 bg-white"
+                    }`}
                     style={{ verticalAlign: "middle" }}
                   >
                     {answers[
                       questions[currentQ]?._id || questions[currentQ]?.id
                     ] === opt && (
-                        <span className="block w-2 h-2 m-1 rounded-full bg-white"></span>
-                      )}
+                      <span className="block w-2 h-2 m-1 rounded-full bg-white"></span>
+                    )}
                   </span>
                 </span>
                 {opt}
@@ -267,7 +267,7 @@ const TestPage = () => {
           <button
             onClick={() =>
               setCurrentQ((prev: number) =>
-                Math.min(questions.length - 1, prev + 1)
+                Math.min(questions.length - 1, prev + 1),
               )
             }
             className="bg-blue-600 hover:bg-blue-700 text-sm px-2 py-1 rounded-lg text-white"
@@ -337,13 +337,14 @@ const TestPage = () => {
                 key={id}
                 onClick={() => setCurrentQ(index)}
                 className={`w-10 h-10 rounded-full text-sm font-medium
-                  ${attempted && marked
-                    ? "bg-purple-500 text-white"
-                    : attempted
-                      ? "bg-green-500 text-white"
-                      : marked
-                        ? "bg-yellow-500 text-white"
-                        : "bg-gray-300 text-gray-700"
+                  ${
+                    attempted && marked
+                      ? "bg-purple-500 text-white"
+                      : attempted
+                        ? "bg-green-500 text-white"
+                        : marked
+                          ? "bg-yellow-500 text-white"
+                          : "bg-gray-300 text-gray-700"
                   } hover:opacity-80`}
               >
                 {index + 1}

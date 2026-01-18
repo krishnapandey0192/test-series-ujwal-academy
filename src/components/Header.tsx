@@ -248,8 +248,8 @@ const Header = () => {
                       item.name === "Leaderboard"
                         ? "bg-gradient-to-r from-amber-400 to-red-500 text-white shadow-lg"
                         : location.pathname === item.to
-                        ? "bg-blue-50 text-blue-700 border border-blue-200"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                          ? "bg-blue-50 text-blue-700 border border-blue-200"
+                          : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
                     }`}
                   >
                     {item.icon && (

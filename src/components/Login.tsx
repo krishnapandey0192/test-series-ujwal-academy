@@ -75,12 +75,14 @@ const Login = () => {
       await axiosInstance.post("/api/auth/forgot-password", {
         email: forgotPasswordEmail,
       });
-      
+
       toast.success(`Password reset link sent to ${forgotPasswordEmail}`);
       setShowForgotPasswordModal(false);
       setForgotPasswordEmail("");
     } catch (err: any) {
-      const msg = err?.response?.data?.message || "Failed to send reset email. Please try again.";
+      const msg =
+        err?.response?.data?.message ||
+        "Failed to send reset email. Please try again.";
       toast.error(msg);
     } finally {
       setLoadingForgotPassword(false);
@@ -272,14 +274,25 @@ const Login = () => {
                 className="text-gray-400 hover:text-gray-600 transition"
                 disabled={loadingForgotPassword}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
 
             <p className="text-gray-600 text-sm mb-6">
-              Enter your email address and we'll send you a link to reset your password.
+              Enter your email address and we'll send you a link to reset your
+              password.
             </p>
 
             <div className="mb-6">

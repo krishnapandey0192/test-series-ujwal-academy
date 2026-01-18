@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Menu, Bell, User } from "lucide-react";
 
 export default function Topbar() {
@@ -7,7 +7,9 @@ export default function Topbar() {
       {/* Left: Logo / Title */}
       <div className="flex items-center space-x-4">
         <Menu className="h-5 w-5 text-gray-600 cursor-pointer md:hidden" />
-        <h1 className="text-xl font-semibold text-gray-800">Test Management System</h1>
+        <h1 className="text-xl font-semibold text-gray-800">
+          Test Management System
+        </h1>
       </div>
 
       {/* Right: Icons */}

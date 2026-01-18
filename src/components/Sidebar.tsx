@@ -90,7 +90,7 @@ export default function Sidebar() {
                 </Link>
               </li>
             );
-          }
+          },
         )}
       </ul>
       {/* User info and logout */}
@@ -109,7 +109,7 @@ export default function Sidebar() {
         </button>
       </div>
       <div className="p-4 text-xs text-gray-400 border-t border-gray-100 bg-gray-50">
-        <span className="font-bold">© 2025 TestPanel</span>
+        <span className="font-bold">© {new Date().getFullYear()} TestPanel</span>
       </div>
     </aside>
   );

@@ -21,8 +21,8 @@ const TestExperience = () => {
       .then((res) => setAttempts(res.data.attempts || []))
       .catch((err) =>
         setAttemptsError(
-          err?.response?.data?.message || "Failed to fetch attempts."
-        )
+          err?.response?.data?.message || "Failed to fetch attempts.",
+        ),
       )
       .finally(() => setAttemptsLoading(false));
   }, [studentId]);
@@ -43,8 +43,8 @@ const TestExperience = () => {
       .then((res) => setAnalysis(res.data.data))
       .catch((err) =>
         setAnalysisError(
-          err?.response?.data?.message || "Failed to fetch analysis."
-        )
+          err?.response?.data?.message || "Failed to fetch analysis.",
+        ),
       )
       .finally(() => setAnalysisLoading(false));
   }, [selectedAttempt, studentId]);
@@ -189,8 +189,8 @@ const TestExperience = () => {
                             q.isCorrect
                               ? "bg-green-500 text-white"
                               : q.selectedOption === -1
-                              ? "bg-gray-300 text-gray-700"
-                              : "bg-red-500 text-white"
+                                ? "bg-gray-300 text-gray-700"
+                                : "bg-red-500 text-white"
                           }`}
                         >
                           {idx + 1}
@@ -224,8 +224,8 @@ const TestExperience = () => {
                                   isCorrect
                                     ? "border-green-500 bg-green-50 text-green-800"
                                     : isSelected
-                                    ? "border-red-500 bg-red-50 text-red-800"
-                                    : "border-gray-200 bg-gray-50 text-gray-700"
+                                      ? "border-red-500 bg-red-50 text-red-800"
+                                      : "border-gray-200 bg-gray-50 text-gray-700"
                                 }
                                 ${
                                   isCorrect && isSelected
@@ -240,8 +240,8 @@ const TestExperience = () => {
                                   isCorrect
                                     ? "border-green-500 bg-green-100 text-green-700"
                                     : isSelected
-                                    ? "border-red-500 bg-red-100 text-red-700"
-                                    : "border-gray-300 bg-white text-gray-700"
+                                      ? "border-red-500 bg-red-100 text-red-700"
+                                      : "border-gray-300 bg-white text-gray-700"
                                 }
                               `}
                               >

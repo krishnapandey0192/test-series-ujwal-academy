@@ -23,10 +23,14 @@ const TestSeriesCategory = () => {
         setCategoryName(catRes.data.category?.name || "");
 
         // Fetch subcategories for this category
-        const subcatRes = await axiosInstance.get(`/api/subcategories?category=${id}`);
+        const subcatRes = await axiosInstance.get(
+          `/api/subcategories?category=${id}`,
+        );
         setSubcategories(subcatRes.data.subcategories || []);
       } catch (err: any) {
-        setError(err?.response?.data?.message || "Failed to fetch subcategories.");
+        setError(
+          err?.response?.data?.message || "Failed to fetch subcategories.",
+        );
         setSubcategories([]);
         setCategoryName("");
       } finally {
@@ -46,9 +50,7 @@ const TestSeriesCategory = () => {
           >
             ← Back to Categories
           </button> */}
-          <h2 className="text-md font-bold text-blue-700">
-             {categoryName}
-          </h2>
+          <h2 className="text-md font-bold text-blue-700">{categoryName}</h2>
         </div>
         {loading ? (
           <div className="flex justify-center items-center min-h-[200px] text-lg">
@@ -78,7 +80,11 @@ const TestSeriesCategory = () => {
                 </p> */}
                 <button
                   className=" bg-blue-600 hover:bg-blue-700 text-white text-sm px-2 py-1 rounded-lg font-semibold transition"
-                  onClick={() => navigate(`/test-series/category/${id}/subcategory/${subcategory._id}`)}
+                  onClick={() =>
+                    navigate(
+                      `/test-series/category/${id}/subcategory/${subcategory._id}`,
+                    )
+                  }
                 >
                   View Tests
                 </button>

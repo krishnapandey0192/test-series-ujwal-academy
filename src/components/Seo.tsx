@@ -16,10 +16,7 @@ const SEO = () => {
         content="Ujjwal Academy Mauganj, SSC Coaching Mauganj, Railway Coaching Mauganj, Government Exam Coaching Mauganj, Best Coaching Institute in Mauganj, SSC Railway Coaching MP"
       />
       <meta name="robots" content="index, follow" />
-      <link
-        rel="canonical"
-        href="https://ujjwalacademymauganj.in"
-      />
+      <link rel="canonical" href="https://ujjwalacademymauganj.in" />
 
       {/* OPEN GRAPH */}
       <meta property="og:type" content="website" />
@@ -31,10 +28,7 @@ const SEO = () => {
         property="og:description"
         content="Join Ujjwal Academy Mauganj for SSC, Railway and Government exam preparation. Trusted coaching institute with high success rate."
       />
-      <meta
-        property="og:url"
-        content="https://ujjwalacademymauganj.in"
-      />
+      <meta property="og:url" content="https://ujjwalacademymauganj.in" />
       <meta property="og:site_name" content="Ujjwal Academy Mauganj" />
 
       {/* TWITTER */}

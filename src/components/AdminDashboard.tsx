@@ -139,16 +139,16 @@ const AdminDashboard = () => {
       setStudentPerf(res.data);
       // Bar: monthly progress
       const months = (res.data.insights.monthlyProgress || []).map(
-        (m: any) => m.month
+        (m: any) => m.month,
       );
       const avgScores = (res.data.insights.monthlyProgress || []).map(
-        (m: any) => parseFloat(m.averageScore)
+        (m: any) => parseFloat(m.averageScore),
       );
       setStudentBarData({ labels: months, data: avgScores });
       // Pie: attempts by exam type
       const examTypes = Object.keys(res.data.insights.attemptsByExamType || {});
       const examCounts = examTypes.map(
-        (type) => res.data.insights.attemptsByExamType[type].length
+        (type) => res.data.insights.attemptsByExamType[type].length,
       );
       setStudentPieData({
         labels: examTypes,
@@ -157,7 +157,7 @@ const AdminDashboard = () => {
       });
     } catch (err: any) {
       setStudentError(
-        err?.response?.data?.error || "Failed to fetch student analytics."
+        err?.response?.data?.error || "Failed to fetch student analytics.",
       );
     } finally {
       setStudentLoading(false);
@@ -402,7 +402,7 @@ const AdminDashboard = () => {
                             {new Date(a.createdAt).toLocaleDateString()}
                           </td>
                         </tr>
-                      )
+                      ),
                     )}
                   </tbody>
                 </table>

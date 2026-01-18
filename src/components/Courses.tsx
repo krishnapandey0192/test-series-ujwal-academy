@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
-  Clock,
-  Users,
-  BookOpen,
   ArrowRight,
-  Star,
-  Trophy,
   Target,
 } from "lucide-react";
 import coursesData from "../data/coursesData";

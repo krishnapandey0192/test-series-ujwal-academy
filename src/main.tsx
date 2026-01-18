@@ -9,5 +9,5 @@ createRoot(document.getElementById("root")!).render(
     <HelmetProvider>
       <AppRouter />
     </HelmetProvider>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -17,7 +17,7 @@ const StudentAnalysis = () => {
       if (studentName) params.studentName = studentName;
       const res = await axiosInstance.get(
         "/api/performance/all-students-tests",
-        { params }
+        { params },
       );
       setData(res?.data?.data || []);
     } catch (err: any) {
