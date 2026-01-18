@@ -82,7 +82,7 @@ const Leaderboard: React.FC = () => {
         `}
         </script>
       </Helmet>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 p-6 mt-10">
         <h2 className="text-4xl font-extrabold text-center text-green-700 mb-10 drop-shadow-lg">
           Leaderboard
         </h2>
