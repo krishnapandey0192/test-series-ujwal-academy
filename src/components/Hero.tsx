@@ -117,7 +117,8 @@ const Hero = () => {
             {/* Floating Achievement Badges */}
             <div className="absolute top-20 left-10 animate-float hidden lg:block">
               <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                🏆 Grand Opening: Alpha Institute 2026
+                Expert Faculty • Proven Results • Affordable Fees
+
               </div>
             </div>
 
