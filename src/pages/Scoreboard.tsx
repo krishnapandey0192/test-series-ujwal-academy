@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Scoreboard = () => {
@@ -19,7 +19,7 @@ const Scoreboard = () => {
       <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border-t-8 border-blue-600">
         <h1 className="text-base sm:text-lg lg:text-xl font-black tracking-tight">
           <span className="bg-gradient-to-r from-blue-700 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
-            UJJAWAL ACADEMY MAUGANJ
+            UJJWAL ACADEMY MAUGANJ
           </span>
         </h1>
         <h2 className="text-xl font-bold text-blue-700 my-2">

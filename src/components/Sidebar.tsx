@@ -59,7 +59,7 @@ export default function Sidebar() {
           </svg>
         </div>
         <span className="font-black text-md tracking-tight text-gray-800 select-none">
-          Ujjawal Academy
+          Ujjwal Academy
         </span>
       </div>
       <ul className="flex-1 mt-8 space-y-1 px-3">

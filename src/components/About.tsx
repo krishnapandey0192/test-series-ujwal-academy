@@ -40,29 +40,29 @@ const About = () => {
     <>
      {/* SEO Helmet */}
       <Helmet>
-        <title>Ujjawal Academy Mauganj | Best Government Exam Coaching Institute</title>
+        <title>Ujjwal Academy Mauganj | Best Government Exam Coaching Institute</title>
         <meta 
           name="description" 
-          content="Ujjawal Academy Mauganj offers premium coaching for competitive government exams. Expert faculty, proven results, modern teaching methods, and personalized mentorship for aspirants across India." 
+          content="Ujjwal Academy Mauganj offers premium coaching for competitive government exams. Expert faculty, proven results, modern teaching methods, and personalized mentorship for aspirants across India." 
         />
         <meta 
           name="keywords" 
-          content="Ujjawal Academy, Government Exam Coaching, SSC Coaching, Banking Exam Coaching, UPSC Coaching, Competitive Exam Preparation, Mauganj Coaching Institute, Top Coaching Institute India" 
+          content="Ujjwal Academy, Government Exam Coaching, SSC Coaching, Banking Exam Coaching, UPSC Coaching, Competitive Exam Preparation, Mauganj Coaching Institute, Top Coaching Institute India" 
         />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Ujjawal Academy Mauganj | Best Government Exam Coaching Institute" />
-        <meta property="og:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjawal Academy to achieve your career goals." />
+        <meta property="og:title" content="Ujjwal Academy Mauganj | Best Government Exam Coaching Institute" />
+        <meta property="og:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjwal Academy to achieve your career goals." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ujjawalacademymauganj.com/about" />
-        <meta property="og:image" content="https://www.ujjawalacademymauganj.com/og-image.jpg" />
+        <meta property="og:url" content="https://ujjwalacademymauganj.in/about" />
+        <meta property="og:image" content="https://ujjwalacademymauganj.in/og-image.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ujjawal Academy Mauganj | Best Government Exam Coaching Institute" />
-        <meta name="twitter:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjawal Academy to achieve your career goals." />
-        <meta name="twitter:image" content="https://www.ujjawalacademymauganj.com/og-image.jpg" />
+        <meta name="twitter:title" content="Ujjwal Academy Mauganj | Best Government Exam Coaching Institute" />
+        <meta name="twitter:description" content="Premium coaching for competitive exams with expert faculty, high success rates, and modern teaching methods. Join Ujjwal Academy to achieve your career goals." />
+        <meta name="twitter:image" content="https://ujjwalacademymauganj.in/og-image.jpg" />
       </Helmet>
     <section id="about" className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
       {/* Background Animation */}
@@ -74,11 +74,11 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-            About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ujjawal Academy</span>
+            About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ujjwal Academy</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Established with a vision to empower students with quality education, 
-            Ujjawal Academy has been a beacon of hope for competitive exam aspirants across India.
+            Ujjwal Academy has been a beacon of hope for competitive exam aspirants across India.
           </p>
         </div>
 

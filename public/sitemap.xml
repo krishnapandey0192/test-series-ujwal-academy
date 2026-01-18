@@ -19,4 +19,22 @@
     <priority>0.6</priority>
   </url>
 
+    <url>
+    <loc>https://ujjwalacademymauganj.in/terms-of-service</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+   <url>
+    <loc>https://ujjwalacademymauganj.in/privacy-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+   <url>
+    <loc>https://ujjwalacademymauganj.in/refund-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

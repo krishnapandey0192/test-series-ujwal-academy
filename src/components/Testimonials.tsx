@@ -26,7 +26,7 @@ const Testimonials = () => {
     //   image: Rajkumar,
     //   rating: 5,
     //   testimonial:
-    //     "The teaching quality at Ujjawal Academy is exceptional. The faculty explains complex concepts in simple ways and provides individual attention to each student.",
+    //     "The teaching quality at Ujjwal Academy is exceptional. The faculty explains complex concepts in simple ways and provides individual attention to each student.",
     //   rank: "Batch Topper",
     //   gradient: "from-blue-500 to-cyan-500",
     // },
@@ -37,7 +37,7 @@ const Testimonials = () => {
       image: kanchan,
       rating: 5,
       testimonial:
-        "Ujjawal Academy provides excellent physical training along with written exam preparation. The instructors are very supportive and motivating.",
+        "Ujjwal Academy provides excellent physical training along with written exam preparation. The instructors are very supportive and motivating.",
       rank: "PT Champion",
       gradient: "from-purple-500 to-pink-500",
     },
@@ -48,7 +48,7 @@ const Testimonials = () => {
       image: shalini,
       rating: 5,
       testimonial:
-        "The doubt clearing sessions and personal guidance from teachers at Ujjawal Academy has boosted my confidence. I feel well-prepared for my upcoming exam.",
+        "The doubt clearing sessions and personal guidance from teachers at Ujjwal Academy has boosted my confidence. I feel well-prepared for my upcoming exam.",
       rank: "Class Monitor",
       gradient: "from-orange-500 to-red-500",
     },
@@ -59,7 +59,7 @@ const Testimonials = () => {
       image: neeraj,
       rating: 5,
       testimonial:
-        "I am very satisfied with the study material and regular test series at Ujjawal Academy. The mock tests help me track my progress and improve weak areas.",
+        "I am very satisfied with the study material and regular test series at Ujjwal Academy. The mock tests help me track my progress and improve weak areas.",
       rank: "Top 10 in Class",
       gradient: "from-emerald-500 to-teal-500",
     },
@@ -71,7 +71,7 @@ const Testimonials = () => {
       image: rohit,
       rating: 5,
       testimonial:
-        "The atmosphere at Ujjawal Academy is very positive and competitive. Daily practice tests and regular feedback help me stay focused on my preparation.",
+        "The atmosphere at Ujjwal Academy is very positive and competitive. Daily practice tests and regular feedback help me stay focused on my preparation.",
       rank: "Star Performer",
       gradient: "from-indigo-500 to-purple-500",
     },
@@ -82,7 +82,7 @@ const Testimonials = () => {
       image: shreyansh,
       rating: 5,
       testimonial:
-        "Ujjawal Academy’s structured approach, doubt-solving sessions, and disciplined study environment have boosted my confidence. The faculty guidance keeps me motivated every day.",
+        "Ujjwal Academy’s structured approach, doubt-solving sessions, and disciplined study environment have boosted my confidence. The faculty guidance keeps me motivated every day.",
       rank: "Top Achiever",
       gradient: "from-blue-500 to-cyan-500",
     },
@@ -93,7 +93,7 @@ const Testimonials = () => {
       image: neha,
       rating: 5,
       testimonial:
-        "Regular mock tests and personal attention at Ujjawal Academy helped me improve my speed and accuracy. The competitive environment always pushes me to give my best.",
+        "Regular mock tests and personal attention at Ujjwal Academy helped me improve my speed and accuracy. The competitive environment always pushes me to give my best.",
       rank: "Star Performer",
       gradient: "from-pink-500 to-red-500",
     },
@@ -104,7 +104,7 @@ const Testimonials = () => {
     //   image: neeraj,
     //   rating: 5,
     //   testimonial:
-    //     "Ujjawal Academy balanced approach of theory and practical training is perfect for Railway preparation. The faculty truly cares about student success.",
+    //     "Ujjwal Academy balanced approach of theory and practical training is perfect for Railway preparation. The faculty truly cares about student success.",
     //   rank: "Best Discipline",
     //   gradient: "from-cyan-500 to-blue-500",
     // },
@@ -151,7 +151,7 @@ const Testimonials = () => {
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             What our current students say about their learning experience at
-            Ujjawal Academy
+            Ujjwal Academy
           </p>
         </div>
 
@@ -346,7 +346,7 @@ const Testimonials = () => {
                 />
               </div>
               <h3 className="text-4xl md:text-5xl font-black text-white mb-4">
-                Ujjawal Academy Achievements
+                Ujjwal Academy Achievements
               </h3>
               <p className="text-xl text-white/90">
                 Excellence in competitive exam preparation

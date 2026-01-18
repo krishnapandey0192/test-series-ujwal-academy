@@ -26,7 +26,7 @@ const Banner = () => {
     },
     {
       id: 2,
-      title: "Welcome to Ujjawal Academy Mauganj",
+      title: "Welcome to Ujjwal Academy Mauganj",
       subtitle: "Your Gateway to Success in Competitive Exams",
       description:
         "State-of-the-art facilities, expert mentorship, and personalized guidance for your success",

@@ -4,7 +4,7 @@ const TermsOfService = () => (
       Terms of Service
     </h1>
     <p className="mb-4">
-      These Terms of Service ("Terms") govern your use of the Ujjawal Academy
+      These Terms of Service ("Terms") govern your use of the Ujjwal Academy
       website and services. By accessing or using our services, you agree to be
       bound by these Terms.
     </p>
@@ -33,7 +33,7 @@ const TermsOfService = () => (
     </h2>
     <p className="mb-4">
       All content, trademarks, and intellectual property on this website are
-      owned by Ujjawal Academy or its licensors. You may not use our content
+      owned by Ujjwal Academy or its licensors. You may not use our content
       without permission.
     </p>
     <h2 className="text-xl font-semibold mt-6 mb-2">4. Termination</h2>
@@ -50,7 +50,7 @@ const TermsOfService = () => (
       6. Limitation of Liability
     </h2>
     <p className="mb-4">
-      Ujjawal Academy is not liable for any damages arising from your use of our
+      Ujjwal Academy is not liable for any damages arising from your use of our
       services.
     </p>
     <h2 className="text-xl font-semibold mt-6 mb-2">7. Changes to Terms</h2>
@@ -61,7 +61,7 @@ const TermsOfService = () => (
     <h2 className="text-xl font-semibold mt-6 mb-2">8. Contact Us</h2>
     <p>
       If you have any questions about these Terms, please contact us at
-      ujjwalacedemymaugnaj@gmail.com.
+      ujjwalacedemymauganj@gmail.com.
     </p>
   </div>
 );

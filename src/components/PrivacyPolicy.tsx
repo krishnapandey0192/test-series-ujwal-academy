@@ -4,7 +4,7 @@ const PrivacyPolicy = () => (
       Privacy Policy
     </h1>
     <p className="mb-4">
-      Ujjawal Academy is committed to protecting your privacy. This Privacy
+      Ujjwal Academy is committed to protecting your privacy. This Privacy
       Policy explains how we collect, use, disclose, and safeguard your
       information when you use our website and services.
     </p>

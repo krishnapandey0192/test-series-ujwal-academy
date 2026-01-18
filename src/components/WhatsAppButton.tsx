@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MessageCircle, X, Phone, Mail } from "lucide-react";
 
 const WhatsAppButton = () => {
@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
     const phoneNumber = "+918878979958";
     const message = encodeURIComponent(
-      "Hi! I would like to know more about the courses at Ujjawal Academy."
+      "Hi! I would like to know more about the courses at Ujjwal Academy."
     );
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, "_blank");

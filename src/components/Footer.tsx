@@ -13,25 +13,21 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Courses", href: "#courses" },
-    { name: "Features", href: "#features" },
-    { name: "Success Stories", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-    { name: "Admissions", href: "#admissions" },
+    { name: "About Us", to: "/about" },
+    { name: "Courses", to: "/courses" },
+    { name: "Features", to: "/features" },
+    { name: "Success Stories", to: "/success-stories" },
+    { name: "Contact", to: "/contact" },
+    { name: "Admissions", to: "/admissions" },
   ];
 
   const courses = [
-    "SSC CGL",
-    "SSC CPO",
-    "SSC GD",
-    "SSC CHSL",
-    "MPSI",
-    "MP Police",
-    "Railway NTPC",
-    "Railway Group D",
-    "Railway ALP",
-    "Patwari",
+    { name: "SSC CGL", to: "/courses/ssc-cgl" },
+    { name: "SSC CHSL", to: "/courses/ssc-chsl" },
+    { name: "SSC GD", to: "/courses/ssc-gd" },
+    { name: "Railway NTPC", to: "/courses/railway-ntpc" },
+    { name: "MP Police", to: "/courses/mp-police" },
+    { name: "Patwari", to: "/courses/patwari" },
   ];
 
   const socialLinks = [
@@ -52,7 +48,7 @@ const Footer = () => {
                 <BookOpen className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Ujjawal Academy</h3>
+                <h3 className="text-xl font-bold">Ujjwal Academy</h3>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -77,14 +73,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.to}
                     className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,14 +90,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Popular Courses</h4>
             <ul className="space-y-3">
-              {courses.slice(0, 6).map((course, index) => (
-                <li key={index}>
-                  <a
-                    href="#courses"
+              {courses.map((course) => (
+                <li key={course.name}>
+                  <Link
+                    to={course.to}
                     className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
                   >
-                    {course}
-                  </a>
+                    {course.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,11 +119,21 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400 shrink-0" />
-                <p className="text-gray-300">+91 8878979958</p>
+                <a
+                  href="tel:+918878979958"
+                  className="text-gray-300 hover:text-white"
+                >
+                  +91 8878979958
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400 shrink-0" />
-                <p className="text-gray-300">ujjwalacedemymaugnaj@gmail.com</p>
+                <a
+                  href="mailto:ujjwalacademymauganj@gmail.com"
+                  className="text-gray-300 hover:text-white"
+                >
+                  ujjwalacademymauganj@gmail.com
+                </a>
               </div>
             </div>
           </div>
@@ -137,7 +143,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Ujjawal Academy. All rights reserved.
+              © {new Date().getFullYear()} Ujjwal Academy. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link

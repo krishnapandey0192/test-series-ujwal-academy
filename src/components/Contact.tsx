@@ -21,7 +21,7 @@ const Contact = () => {
     e.preventDefault();
     
     // Create WhatsApp message
-    const whatsappMessage = `Hi! I'm interested in joining Ujjawal Academy.
+    const whatsappMessage = `Hi! I'm interested in joining Ujjwal Academy.
     
 Name: ${formData.name}
 Email: ${formData.email}
@@ -59,7 +59,7 @@ Message: ${formData.message}`;
     {
       icon: Mail,
       title: 'Email Address',
-      details: ['ujjwalacedemymaugnaj@gmail.com', 'admissions@ujjawalacademy.com', 'support@ujjawalacademy.com']
+      details: ['ujjwalacedemymaugnaj@gmail.com', 'admissions@ujjwalacademymauganj.in', 'support@ujjwalacademymauganj.in']
     },
     {
       icon: Clock,
@@ -226,7 +226,7 @@ Message: ${formData.message}`;
                   Call Now
                 </a>
                 <a
-                  href="mailto:info@ujjawalacademy.com"
+                  href="mailto:ujjwalacedemymaugnaj@gmail.com"
                   className="flex items-center p-3 bg-white/20 rounded-lg hover:bg-white/30 transition-colors duration-200"
                 >
                   <Mail className="h-5 w-5 mr-3" />

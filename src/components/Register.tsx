@@ -98,7 +98,7 @@ const Register = () => {
         {/* Navigation Links */}
 
         <h2 className="text-xl sm:text-2xl font-bold text-center text-green-700 mb-6 mt-2">
-          Register - Ujjawal Academy Mauganj
+          Register - Ujjwal Academy Mauganj
         </h2>
 
         {/* Centered Navigation Buttons */}

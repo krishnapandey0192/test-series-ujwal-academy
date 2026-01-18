@@ -96,7 +96,7 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center p-4">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-xl md:text-2xl font-bold text-center text-blue-700 mb-6">
-          Login - Ujjawal Academy Mauganj
+          Login - Ujjwal Academy Mauganj
         </h2>
 
         {/* Centered Navigation Buttons */}

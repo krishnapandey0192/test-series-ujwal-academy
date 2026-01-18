@@ -68,7 +68,7 @@ const Header = () => {
             <div className="flex flex-col">
               <h1 className="text-base sm:text-lg lg:text-xl font-black tracking-tight">
                 <span className="bg-gradient-to-r from-blue-700 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
-                  Ujjawal Academy
+                  Ujjwal Academy
                 </span>
               </h1>
               <div className="flex items-center gap-1.5 mt-0.5">
@@ -160,7 +160,7 @@ const Header = () => {
                   <div className="absolute right-0 top-10 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 z-50 animate-fade-in">
                     <div className="px-4 py-3 border-b border-gray-100">
                       <div className="font-semibold text-gray-800">
-                        {userName || "Ujjawal Academy"}
+                        {userName || "Ujjwal Academy"}
                       </div>
                       <div className="text-xs text-gray-500">
                         {userEmail || "user@email.com"}
@@ -224,7 +224,7 @@ const Header = () => {
                   </div>
                   <div>
                     <h2 className="text-lg font-bold text-gray-800">Menu</h2>
-                    <p className="text-xs text-gray-500">Ujjawal Academy</p>
+                    <p className="text-xs text-gray-500">Ujjwal Academy</p>
                   </div>
                 </div>
                 <button

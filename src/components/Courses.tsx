@@ -7,180 +7,29 @@ import {
   Star,
   Trophy,
   Target,
-  Zap,
 } from "lucide-react";
+import coursesData from "../data/coursesData";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", "SSC", "Railway", "Police", "Others"];
 
-  const courses = [
-    {
-      title: "SSC CGL",
-      category: "SSC",
-      description:
-        "Complete preparation for Staff Selection Commission Combined Graduate Level examination",
-      duration: "12 Months",
-      students: "2500+",
-      subjects: [
-        "Quantitative Aptitude",
-        "English",
-        "General Studies",
-        "Reasoning",
-      ],
-      price: "₹4,500",
-      originalPrice: "₹6,000",
-      popular: true,
-      rating: 4.9,
-      image:
-        "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "Live Classes",
-        "Mock Tests",
-        "Study Material",
-        "Doubt Sessions",
-      ],
-      gradient: "from-blue-600 to-purple-600",
-    },
-    {
-      title: "SSC CPO",
-      category: "SSC",
-      description:
-        "Comprehensive coaching for Central Police Organization examination",
-      duration: "10 Months",
-      students: "1800+",
-      subjects: [
-        "General Studies",
-        "Quantitative Aptitude",
-        "English",
-        "Hindi",
-      ],
-      price: "₹4,200",
-      originalPrice: "₹5,500",
-      popular: false,
-      rating: 4.8,
-      image:
-        "https://images.pexels.com/photos/5212662/pexels-photo-5212662.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "Physical Training",
-        "Written Exam Prep",
-        "Interview Guidance",
-        "Medical Test Prep",
-      ],
-      gradient: "from-emerald-600 to-teal-600",
-    },
-    {
-      title: "Railway NTPC",
-      category: "Railway",
-      description: "Non-Technical Popular Categories examination preparation",
-      duration: "12 Months",
-      students: "2200+",
-      subjects: [
-        "General Awareness",
-        "Mathematics",
-        "General Intelligence",
-        "General Science",
-      ],
-      price: "₹4,800",
-      originalPrice: "₹6,200",
-      popular: true,
-      rating: 4.9,
-      image:
-        "https://images.pexels.com/photos/5212700/pexels-photo-5212700.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "CBT Preparation",
-        "Skill Test",
-        "Document Verification",
-        "Medical Exam",
-      ],
-      gradient: "from-orange-600 to-red-600",
-    },
-    {
-      title: "MPSI & MP Police",
-      category: "Police",
-      description:
-        "Madhya Pradesh Police Sub Inspector and Constable preparation",
-      duration: "9 Months",
-      students: "1500+",
-      subjects: [
-        "General Knowledge",
-        "General Hindi",
-        "Mathematics",
-        "General Science",
-      ],
-      price: "₹3,800",
-      originalPrice: "₹5,000",
-      popular: false,
-      rating: 4.7,
-      image:
-        "https://images.pexels.com/photos/5212649/pexels-photo-5212649.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "Physical Training",
-        "Written Test",
-        "Interview Prep",
-        "Medical Test",
-      ],
-      gradient: "from-purple-600 to-pink-600",
-    },
-    {
-      title: "Railway Group D",
-      category: "Railway",
-      description: "Railway Recruitment Board Group D examination coaching",
-      duration: "8 Months",
-      students: "2800+",
-      subjects: [
-        "Mathematics",
-        "General Intelligence",
-        "General Science",
-        "General Awareness",
-      ],
-      price: "₹3,500",
-      originalPrice: "₹4,500",
-      popular: true,
-      rating: 4.8,
-      image:
-        "https://images.pexels.com/photos/5212710/pexels-photo-5212710.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "CBT Coaching",
-        "PET Training",
-        "Document Verification",
-        "Medical Exam",
-      ],
-      gradient: "from-cyan-600 to-blue-600",
-    },
-    {
-      title: "SSC GD",
-      category: "SSC",
-      description: "Specialized training for General Duty Constable positions",
-      duration: "8 Months",
-      students: "3200+",
-      subjects: [
-        "General Intelligence",
-        "General Knowledge",
-        "Elementary Mathematics",
-        "English/Hindi",
-      ],
-      price: "₹3,200",
-      originalPrice: "₹4,200",
-      popular: false,
-      rating: 4.6,
-      image:
-        "https://images.pexels.com/photos/5212680/pexels-photo-5212680.jpeg?auto=compress&cs=tinysrgb&w=600",
-      features: [
-        "Written Exam",
-        "Physical Test",
-        "Medical Test",
-        "Document Verification",
-      ],
-      gradient: "from-indigo-600 to-purple-600",
-    },
-  ];
+  // Use central courses data for DRY structure
+  const mappedCourses = coursesData;
 
   const filteredCourses =
     activeCategory === "All"
-      ? courses
-      : courses.filter((course) => course.category === activeCategory);
+      ? mappedCourses
+      : mappedCourses.filter((course) => {
+          const t = course.title.toLowerCase();
+          if (activeCategory === "SSC") return t.includes("ssc");
+          if (activeCategory === "Railway") return t.includes("railway");
+          if (activeCategory === "Police")
+            return t.includes("police") || t.includes("mpsi");
+          return true;
+        });
 
   return (
     <section
@@ -233,103 +82,66 @@ const Courses = () => {
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {filteredCourses.map((course, index) => (
             <div
-              key={index}
-              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1 hover:scale-101 animate-fade-in-up min-h-[220px] flex flex-col"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={course.slug}
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1 animate-fade-in-up min-h-[220px] flex flex-col"
+              style={{ animationDelay: `${index * 0.08}s` }}
             >
-              {/* Course Image */}
-              <div className="relative h-20 sm:h-24 md:h-28 overflow-hidden">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r ${course.gradient} opacity-60`}
-                ></div>
-                {/* Badges */}
-                <div className="absolute top-1 left-1 flex flex-col gap-0.5">
-                  {course.popular && (
-                    <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold shadow animate-pulse">
-                      🔥 Most Popular
-                    </span>
-                  )}
-                  <div className="flex items-center bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-xs font-semibold">
-                    <Star className="h-3 w-3 mr-1 fill-current text-yellow-400" />
-                    {course.rating}
-                  </div>
-                </div>
-                {/* Price Badge */}
-                <div className="absolute top-1 right-1 text-right">
-                  <div className="text-white text-base font-extrabold">
-                    {course.price}
-                  </div>
-                  <div className="text-white/80 text-xs line-through">
-                    {course.originalPrice}
-                  </div>
-                </div>
+              {/* Header */}
+              <div className="h-28 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white">
+                <h3 className="text-xl font-bold">{course.title}</h3>
               </div>
-              <div className="p-2 flex-1 flex flex-col justify-between">
+
+              <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex justify-between items-start mb-1">
-                    <h3 className="text-[17px] font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-1">
-                      {course.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 mb-2 text-sm leading-snug line-clamp-2">
-                    {course.description}
+                  <p className="text-gray-600 mb-3 text-sm leading-snug line-clamp-3">
+                    {course.shortDescription}
                   </p>
-                  <div className="flex items-center gap-2 mb-2 text-xs text-gray-500">
-                    <div className="flex items-center">
-                      <Clock className="h-3 w-3 mr-1 text-blue-500" />
-                      {course.duration}
+
+                  {course.syllabus && course.syllabus.length > 0 && (
+                    <div className="mb-3">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">
+                        Key Topics
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {(course.syllabus[0].subjects || [])
+                          .slice(0, 6)
+                          .map((s, i) => (
+                            <span
+                              key={i}
+                              className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-[11px]"
+                            >
+                              {s}
+                            </span>
+                          ))}
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <Users className="h-3 w-3 mr-1 text-emerald-500" />
-                      {course.students}
+                  )}
+
+                  {course.features && (
+                    <div className="mb-2">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">
+                        Features
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {course.features.slice(0, 6).map((f, i) => (
+                          <span
+                            key={i}
+                            className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-[11px]"
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  {/* Features */}
-                  <div className="mb-1">
-                    <h4 className="font-semibold text-gray-900 mb-0.5 flex items-center text-xs">
-                      <Zap className="h-3 w-3 mr-1 text-yellow-500" />
-                      Key Features
-                    </h4>
-                    <div className="grid grid-cols-2 gap-0.5">
-                      {course.features.map((feature, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 px-2 py-0.5 rounded-full text-[11px] font-medium line-clamp-1"
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Subjects */}
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-0.5 flex items-center text-xs">
-                      <BookOpen className="h-3 w-3 mr-1 text-purple-500" />
-                      Subjects
-                    </h4>
-                    <div className="flex flex-wrap gap-0.5">
-                      {course.subjects.map((subject, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-[11px] line-clamp-1"
-                        >
-                          {subject}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  )}
                 </div>
-                <button
-                  className={`btn-hover-effect w-full bg-gradient-to-r ${course.gradient} text-white py-1.5 mt-2 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group-hover:scale-105`}
+
+                <Link
+                  to={`/courses/${course.slug}`}
+                  className="mt-4 inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-xl font-semibold"
                 >
-                  Enroll Now{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                  View Course <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </div>
             </div>
           ))}

@@ -4,7 +4,7 @@ const RefundPolicy = () => (
       Refund Policy
     </h1>
     <p className="mb-4">
-      At Ujjawal Academy, we strive to provide the best educational experience.
+      At Ujjwal Academy, we strive to provide the best educational experience.
       Please read our refund policy carefully before making any purchase.
     </p>
     <h2 className="text-xl font-semibold mt-6 mb-2">

@@ -24,6 +24,13 @@ import TermsOfService from "./components/TermsOfService";
 import RefundPolicy from "./components/RefundPolicy";
 import StudentAnalysis from "./pages/StudentAnalysis";
 import ResetPassword from "./components/ResetPassword";
+import About from "./components/About";
+import Courses from "./components/Courses";
+import Contact from "./components/Contact";
+import Admissions from "./components/Admissions";
+import CourseRoute from "./components/CourseRoute";
+import Features from "./components/Features";
+import Testimonials from "./components/Testimonials";
 
 const AppRouter = () => (
   <>
@@ -73,33 +80,33 @@ const AppRouter = () => (
         <Route
           path="/student/test/view/:id"
           element={
-            //   <Layout>
-            <TestPage />
-            //   </Layout>
+            <Layout>
+              <TestPage />
+            </Layout>
           }
         />
         <Route
           path="/register"
           element={
-            //   <Layout>
-            <Register />
-            //   </Layout>
+            <Layout>
+              <Register />
+            </Layout>
           }
         />
         <Route
           path="/login"
           element={
-            //   <Layout>
-            <Login />
-            //   </Layout>
+            <Layout>
+              <Login />
+            </Layout>
           }
         />
         <Route
           path="/reset-password"
           element={
-            //   <Layout>
-            <ResetPassword />
-            //   </Layout>
+            <Layout>
+              <ResetPassword />
+            </Layout>
           }
         />
         <Route
@@ -131,15 +138,102 @@ const AppRouter = () => (
           <Route path="categories" element={<AdminCategories />} />
           <Route path="add-test" element={<AdminAddTest />} />
           <Route path="category/:categoryId" element={<AdminSubcategories />} />
-          <Route path="category/:categoryId/:subcategoryId" element={<AdminCategoryTests />} />
+          <Route
+            path="category/:categoryId/:subcategoryId"
+            element={<AdminCategoryTests />}
+          />
           <Route path="test/view/:id" element={<TestPage />} />
           <Route path="student-analysis" element={<StudentAnalysis />} />
         </Route>
         {/* Add this route for scoreboard */}
-        <Route path="/scoreboard" element={<Scoreboard />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route
+          path="/scoreboard"
+          element={
+            <Layout>
+              <Scoreboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/courses"
+          element={
+            <Layout>
+              <Courses />
+            </Layout>
+          }
+        />
+        <Route
+          path="/courses/:slug"
+          element={
+            <Layout>
+              <CourseRoute />
+            </Layout>
+          }
+        />
+        <Route
+          path="/admissions"
+          element={
+            <Layout>
+              <Admissions />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Layout>
+              <Contact />
+            </Layout>
+          }
+        />
+        <Route
+          path="/features"
+          element={
+            <Layout>
+              <Features />
+            </Layout>
+          }
+        />
+        <Route
+          path="/success-stories"
+          element={
+            <Layout>
+              <Testimonials />
+            </Layout>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <Layout>
+              <PrivacyPolicy />
+            </Layout>
+          }
+        />
+        <Route
+          path="/terms-of-service"
+          element={
+            <Layout>
+              <TermsOfService />
+            </Layout>
+          }
+        />
+        <Route
+          path="/refund-policy"
+          element={
+            <Layout>
+              <RefundPolicy />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   </>
